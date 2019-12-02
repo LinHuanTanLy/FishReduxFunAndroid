@@ -9,19 +9,19 @@ import 'banner_state.dart';
 
 Widget buildView(
     BannerState state, Dispatch dispatch, ViewService viewService) {
-//  return Container(
-//    height: 200,
-//    child: Swiper(
-//      itemBuilder: (BuildContext context, int index) {
-//        return new Image.network(
-//          '${state.dataForBanner[index].imagePath}',
-//          fit: BoxFit.fill,
-//        );
-//      },
-//      itemCount: state.dataForBanner.length,
-//      pagination: new SwiperPagination(),
-//      control: new SwiperControl(),
-//    ),
-//  );
-  return Text(state.dataForBanner.toString());
+  return state.dataForBanner.isNotEmpty == true
+      ? Container(
+          height: 160,
+          child: Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return new Image.network(
+                '${state.dataForBanner[index].imagePath}',
+                fit: BoxFit.fill,
+              );
+            },
+            itemCount: state.dataForBanner.length,
+            pagination: new SwiperPagination(),
+          ),
+        )
+      : Container();
 }

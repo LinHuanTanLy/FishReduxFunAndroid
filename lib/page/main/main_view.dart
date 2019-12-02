@@ -20,12 +20,8 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   }
 
   return Scaffold(
-//    body: Column(
-//      children: <Widget>[
-//        viewService.buildComponent('index'),
-//        viewService.buildComponent('second'),
-//      ],
-//    ),
+    primary: true,
+//    appBar: AppBar(),
     body: IndexedStack(
       index: state.currIndex,
       children: <Widget>[

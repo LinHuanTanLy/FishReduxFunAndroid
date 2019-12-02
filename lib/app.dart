@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 
+import 'conf/ColorConf.dart';
 import 'global_state/global_state.dart';
 import 'global_state/global_store.dart';
 import 'page/login/login_page.dart';
@@ -31,9 +32,7 @@ Widget createApp() {
         page.connectExtraStore<GlobalState>(GlobalStore.store,
             (Object pageState, GlobalState appState) {
           final GlobalBaseState p = pageState;
-          if (p.themeColor != appState.themeColor ||
-              p.screenH != appState.screenH ||
-              p.screenW != appState.screenW) {
+          if (p.themeColor != appState.themeColor) {
             if (pageState is Cloneable) {
               final Object copy = pageState.clone();
               final GlobalBaseState newState = copy;
@@ -75,9 +74,9 @@ Widget createApp() {
   );
 
   return MaterialApp(
-    debugShowCheckedModeBanner: false,
+    darkTheme: ThemeData.light(),
+    debugShowCheckedModeBanner: true,
     theme: ThemeData(
-      primarySwatch: Colors.blue,
     ),
     home: routes.buildPage('main', null),
     onGenerateRoute: (RouteSettings settings) {
