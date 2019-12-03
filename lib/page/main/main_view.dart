@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
 
+import '../../app.dart';
 import 'main_action.dart';
 import 'main_state.dart';
 
@@ -20,13 +21,14 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   }
 
   Widget _renderIndexStack() {
-    IndexedStack _tempIndex = IndexedStack(
+    var indexedStack = IndexedStack(
       index: state.currIndex,
       children: <Widget>[
-        viewService.buildComponent('index'),
-        viewService.buildComponent('second'),
+        AppRoute.global.buildPage('index', null),
+        AppRoute.global.buildPage('second', null),
       ],
     );
+    IndexedStack _tempIndex = indexedStack;
     return _tempIndex;
     // return Stack(children: <Widget>[
     // Offstage(child: viewService.buildComponent('index'),offstage: state.currIndex!=0,),

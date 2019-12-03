@@ -5,15 +5,15 @@ import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-class SecondComponent extends Component<SecondState> {
-  SecondComponent()
+class BannerComponent extends Component<BannerState> {
+  BannerComponent()
       : super(
             effect: buildEffect(),
             reducer: buildReducer(),
             view: buildView,
-            dependencies: Dependencies<SecondState>(
+            dependencies: Dependencies<BannerState>(
                 adapter: null,
-                slots: <String, Dependent<SecondState>>{
+                slots: <String, Dependent<BannerState>>{
                 }),);
 
 }

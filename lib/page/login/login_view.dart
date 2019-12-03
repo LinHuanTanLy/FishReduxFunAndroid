@@ -5,5 +5,5 @@ import 'login_action.dart';
 import 'login_state.dart';
 
 Widget buildView(loginState state, Dispatch dispatch, ViewService viewService) {
-  return Container();
+  return Container(child: Text('login'),);
 }
