@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'action.dart';
-import 'state.dart';
+import 'index_action.dart';
+import 'index_state.dart';
+
 
 Reducer<IndexState> buildReducer() {
   return asReducer(

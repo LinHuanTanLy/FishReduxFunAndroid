@@ -3,10 +3,10 @@ import 'package:flutter/material.dart' hide Action;
 
 import 'global_state/global_state.dart';
 import 'global_state/global_store.dart';
-import 'page/index/page.dart';
+import 'page/index/index_page.dart';
 import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
-import 'page/second_page/page.dart';
+import 'page/second/second_page.dart';
 
 /// 创建应用的根 Widget
 /// 1. 创建一个简单的路由，并注册页面

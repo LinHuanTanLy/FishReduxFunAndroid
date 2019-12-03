@@ -1,9 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/page/second/second_effect.dart';
+import 'package:flutter_android_fun/page/second/second_reducer.dart';
+import 'package:flutter_android_fun/page/second/second_view.dart';
 
-import 'effect.dart';
-import 'reducer.dart';
-import 'state.dart';
-import 'view.dart';
+import 'second_state.dart';
+
 
 class SecondPage extends Page<SecondState, Map<String, dynamic>> {
   SecondPage()

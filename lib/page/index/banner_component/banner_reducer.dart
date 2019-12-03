@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'action.dart';
-import 'state.dart';
+import 'banner_action.dart';
+import 'banner_state.dart';
+
 
 Reducer<BannerState> buildReducer() {
   return asReducer(

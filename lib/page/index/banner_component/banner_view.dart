@@ -2,8 +2,8 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-import 'action.dart';
-import 'state.dart';
+import 'banner_state.dart';
+
 
 Widget buildView(
     BannerState state, Dispatch dispatch, ViewService viewService) {

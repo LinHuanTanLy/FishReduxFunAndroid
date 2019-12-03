@@ -1,10 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'banner_component/component.dart';
-import 'effect.dart';
-import 'reducer.dart';
-import 'state.dart';
-import 'view.dart';
+import 'banner_component/banner_component.dart';
+import 'index_effect.dart';
+import 'index_reducer.dart';
+import 'index_state.dart';
+import 'index_view.dart';
+
 
 class IndexPage extends Page<IndexState, Map<String, dynamic>> {
   IndexPage()

@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
 
-import 'banner_component/state.dart';
+import 'banner_component/banner_state.dart';
+
 
 class IndexState implements Cloneable<IndexState> {
   List<Data> bannerDataSource;

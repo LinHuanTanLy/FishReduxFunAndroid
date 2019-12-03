@@ -1,9 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'effect.dart';
-import 'reducer.dart';
-import 'state.dart';
-import 'view.dart';
+import 'banner_effect.dart';
+import 'banner_reducer.dart';
+import 'banner_state.dart';
+import 'banner_view.dart';
+
 
 class BannerComponent extends Component<BannerState> {
   BannerComponent()

@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'action.dart';
-import 'state.dart';
+
+import 'second_action.dart';
+import 'second_state.dart';
 
 Effect<SecondState> buildEffect() {
   return combineEffects(<Object, Effect<SecondState>>{
