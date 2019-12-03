@@ -7,9 +7,12 @@ import 'banner_state.dart';
 Effect<BannerState> buildEffect() {
   return combineEffects(<Object, Effect<BannerState>>{
     BannerAction.action: _onAction,
-
+    Lifecycle.initState: _onInitStats,
   });
 }
 
 void _onAction(Action action, Context<BannerState> ctx) {}
 
+void _onInitStats(Action action, Context<BannerState> ctx) {
+  print('----------------------bannerPart liftcycle=${ctx.state.dataForBanner}');
+}
