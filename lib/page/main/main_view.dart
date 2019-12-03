@@ -19,16 +19,25 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
         title: Text(menuStr));
   }
 
-  return Scaffold(
-    primary: true,
-//    appBar: AppBar(),
-    body: IndexedStack(
+  Widget _renderIndexStack() {
+    IndexedStack _tempIndex = IndexedStack(
       index: state.currIndex,
       children: <Widget>[
         viewService.buildComponent('index'),
         viewService.buildComponent('second'),
       ],
-    ),
+    );
+    return _tempIndex;
+    // return Stack(children: <Widget>[
+    // Offstage(child: viewService.buildComponent('index'),offstage: state.currIndex!=0,),
+    // Offstage(child: viewService.buildComponent('second'),offstage: state.currIndex==0,),
+
+    // ],);
+  }
+
+  return Scaffold(
+    primary: true,
+    body: _renderIndexStack(),
     bottomNavigationBar: BottomNavigationBar(
         unselectedFontSize: 11,
         selectedFontSize: 12,

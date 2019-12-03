@@ -16,13 +16,6 @@ Effect<MainState> buildEffect() {
   });
 }
 
-void _onBuild(Action action, Context<MainState> ctx) {
-//  Size size = MediaQuery.of(ctx.context).size;
-//  double w = size?.width;
-//  double h = size?.height;
-//  GlobalStore.store.dispatch(GlobalActionCreator.onUpdateGlobalH(h));
-//  GlobalStore.store.dispatch(GlobalActionCreator.onUpdateGlobalW(w));
-}
 
 
 void _onClickTab(Action action, Context<MainState> ctx) {
