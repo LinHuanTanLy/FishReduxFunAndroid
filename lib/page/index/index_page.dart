@@ -1,11 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/page/index/classify_component/classify_component.dart';
 
 import 'banner_component/banner_component.dart';
 import 'index_effect.dart';
 import 'index_reducer.dart';
 import 'index_state.dart';
 import 'index_view.dart';
-
 
 class IndexPage extends Page<IndexState, Map<String, dynamic>> {
   IndexPage()
@@ -17,7 +17,8 @@ class IndexPage extends Page<IndexState, Map<String, dynamic>> {
           dependencies: Dependencies<IndexState>(
               adapter: null,
               slots: <String, Dependent<IndexState>>{
-                "banner": BannerConnector() + BannerComponent()
+                "banner": BannerConnector() + BannerComponent(),
+                "classify": ClassifyConnector() + ClassifyComponent(),
               }),
           middleware: <Middleware<IndexState>>[],
         );
