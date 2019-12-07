@@ -7,6 +7,7 @@ import 'index_effect.dart';
 import 'index_reducer.dart';
 import 'index_state.dart';
 import 'index_view.dart';
+import 'project_component/project_component.dart';
 
 class IndexPage extends Page<IndexState, Map<String, dynamic>> {
   IndexPage()
@@ -21,6 +22,7 @@ class IndexPage extends Page<IndexState, Map<String, dynamic>> {
                 "banner": BannerConnector() + BannerComponent(),
                 "classify": ClassifyConnector() + ClassifyComponent(),
                 "hotArticle": HotArticleConnector() + HotArticleComponent(),
+                "hotProject": ProjectConnector() + ProjectComponent(),
               }),
           middleware: <Middleware<IndexState>>[],
         );

@@ -10,6 +10,7 @@ Widget buildView(IndexState state, Dispatch dispatch, ViewService viewService) {
         children: <Widget>[
           viewService.buildComponent('banner'),
           viewService.buildComponent('classify'),
+          viewService.buildComponent('hotProject'),
           viewService.buildComponent('hotArticle'),
         ],
       ),

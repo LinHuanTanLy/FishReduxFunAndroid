@@ -3,6 +3,7 @@ import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
 import 'package:flutter_android_fun/domain/entity/ClassifyBean.dart';
 import 'package:flutter_android_fun/domain/entity/CommArticleBean.dart';
 import 'package:flutter_android_fun/domain/entity/HotArticleBean.dart';
+import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
 import 'package:flutter_android_fun/net/DioUtils.dart';
 
 import 'index_action.dart';
@@ -32,9 +33,16 @@ void _onInitState(Action action, Context<IndexState> ctx) {
     HotArticleBean _bean = HotArticleBean.fromJson(data);
     ctx.dispatch(IndexActionCreator.updateHotArticleSource(_bean?.data ?? []));
   });
+
   DioUtils.getInstance().doGet('article/list/0/json', (data) {
     CommArticleBean _bean = CommArticleBean.fromJson(data);
     ctx.dispatch(
         IndexActionCreator.updateIndexArticleSource(_bean?.data?.datas ?? []));
+  });
+
+  DioUtils.getInstance().doGet('article/listproject/0/json', (data) {
+    ProjectListBean _bean = ProjectListBean.fromJson(data);
+    ctx.dispatch(
+        IndexActionCreator.updateProjectSource(_bean?.data?.datas ?? []));
   });
 }

@@ -3,6 +3,7 @@ import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
 import 'package:flutter_android_fun/domain/entity/ClassifyBean.dart';
 import 'package:flutter_android_fun/domain/entity/CommArticleBean.dart';
 import 'package:flutter_android_fun/domain/entity/HotArticleBean.dart';
+import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
 
 enum IndexAction {
   action,
@@ -10,6 +11,7 @@ enum IndexAction {
   updateClassifySource,
   updateHotArticleSource,
   updateIndexArticleSource,
+  updateProjectSource,
 }
 
 class IndexActionCreator {
@@ -31,5 +33,9 @@ class IndexActionCreator {
 
   static Action updateIndexArticleSource(List<CommArticleCellBean> list) {
     return Action(IndexAction.updateIndexArticleSource, payload: list);
+  }
+
+  static Action updateProjectSource(List<ProjectListCellBean> list) {
+    return Action(IndexAction.updateProjectSource, payload: list);
   }
 }

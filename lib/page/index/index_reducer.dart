@@ -14,6 +14,7 @@ Reducer<IndexState> buildReducer() {
       IndexAction.updateClassifySource: _onUpdateClassifyDataSource,
       IndexAction.updateHotArticleSource: _onUpdateHotArticleDataSource,
       IndexAction.updateIndexArticleSource: _onUpdateIndexArticleDataSource,
+      IndexAction.updateProjectSource: _onUpdateProjectDataSource,
     },
   );
 }
@@ -37,8 +38,14 @@ IndexState _onUpdateHotArticleDataSource(IndexState state, Action action) {
 
 IndexState _onUpdateIndexArticleDataSource(IndexState state, Action action) {
   final IndexState newState = state.clone();
-  List<CommArticleCellBean> _tempList=action.payload;
-  newState.commArticleDataSource=(_tempList);
+  List<CommArticleCellBean> _tempList = action.payload;
+  newState.commArticleDataSource = (_tempList);
+  return newState;
+}
+
+IndexState _onUpdateProjectDataSource(IndexState state, Action action) {
+  final IndexState newState = state.clone();
+  newState.projectListDataSource = action.payload;
   return newState;
 }
 
