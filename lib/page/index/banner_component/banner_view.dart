@@ -10,6 +10,7 @@ Widget buildView(
     children: <Widget>[
       Container(
         child: Swiper(
+          
           duration: 5,
           transformer: ScaleAndFadeTransformer(),
           autoplay: state.bannerDataSource.isNotEmpty,

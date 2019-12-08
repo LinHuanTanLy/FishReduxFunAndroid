@@ -27,27 +27,24 @@ Widget buildView(
         Container(
           child: Text(
             '${state.cellBean?.title ?? ""}',
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: Colors.black, fontSize: 14),
           ),
-          margin: const EdgeInsets.only(left: 18),
         ),
         Container(
           child: Row(
             children: <Widget>[
-              Container(
-                child: ClipOval(
-                  child: Image.asset(
-                    'images/author_pic9.jpg',
-                    width: 16,
-                  ),
-                ),
-                margin: const EdgeInsets.only(right: 4),
-              ),
               Text(
-                '${state.cellBean?.shareUser ?? "匿名用户"}',
+                '作者：${state.cellBean?.author?.isEmpty == true ? state.cellBean?.shareUser : state.cellBean?.author}',
                 style: TextStyle(fontSize: 10, color: ColorConf.Color48586D),
+              ),
+              Container(
+                child: Text(
+                  '分类：${state.cellBean?.superChapterName}/${state.cellBean?.chapterName}',
+                  style: TextStyle(fontSize: 10, color: ColorConf.Color48586D),
+                ),
+                margin: const EdgeInsets.only(left: 14),
               ),
               Expanded(
                   child: Container(
@@ -59,7 +56,7 @@ Widget buildView(
               ))
             ],
           ),
-          margin: const EdgeInsets.only(top: 10, left: 16),
+          margin: const EdgeInsets.only(top: 10),
         ),
       ],
     ),

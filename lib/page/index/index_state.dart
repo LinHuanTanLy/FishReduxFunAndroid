@@ -1,15 +1,17 @@
+import 'dart:ui';
+
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
 import 'package:flutter_android_fun/domain/entity/ClassifyBean.dart';
 import 'package:flutter_android_fun/domain/entity/CommArticleBean.dart';
 import 'package:flutter_android_fun/domain/entity/HotArticleBean.dart';
 import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
+import 'package:flutter_android_fun/global_state/global_state.dart';
 import 'package:flutter_android_fun/page/index/classify_component/classify_state.dart';
 import 'package:flutter_android_fun/page/index/hot_component/hot_state.dart';
 import 'banner_component/banner_state.dart';
-import 'project_component/project_state.dart';
 
-class IndexState implements Cloneable<IndexState> {
+class IndexState implements GlobalBaseState, Cloneable<IndexState> {
   /// banner
   List<Data> bannerDataSource;
 
@@ -32,8 +34,19 @@ class IndexState implements Cloneable<IndexState> {
       ..classifyDataSource = classifyDataSource
       ..hotArticleDataSource = hotArticleDataSource
       ..commArticleDataSource = commArticleDataSource
-      ..projectListDataSource = projectListDataSource;
+      ..projectListDataSource = projectListDataSource
+      ..screenH = screenH
+      ..screenW = screenW;
   }
+
+  @override
+  double screenH;
+
+  @override
+  double screenW;
+
+  @override
+  Color themeColor;
 }
 
 IndexState initState(Map<String, dynamic> args) {
@@ -45,34 +58,20 @@ IndexState initState(Map<String, dynamic> args) {
     ..projectListDataSource = [];
 }
 
-/// 热门项目连接器
-class ProjectConnector
-    extends Reselect1<IndexState, ProjectState, List<ProjectListCellBean>> {
-  @override
-  ProjectState computed(List<ProjectListCellBean> state) {
-    return ProjectState()..projectListDataSource = state;
-  }
-
-  @override
-  List<ProjectListCellBean> getSub0(IndexState state) {
-    return state.projectListDataSource;
-  }
-
-  @override
-  void set(IndexState state, ProjectState subState) {
-    subState.projectListDataSource = state.projectListDataSource;
-  }
-}
-
 /// 热门置顶文章连接器
-class HotArticleConnector extends Reselect2<IndexState, HotArticleState,
-    List<HotArticleCellBean>, List<CommArticleCellBean>> {
+class HotArticleConnector extends Reselect3<
+    IndexState,
+    HotArticleState,
+    List<HotArticleCellBean>,
+    List<CommArticleCellBean>,
+    List<ProjectListCellBean>> {
   @override
-  HotArticleState computed(
-      List<HotArticleCellBean> sub0, List<CommArticleCellBean> sub1) {
+  HotArticleState computed(List<HotArticleCellBean> sub0,
+      List<CommArticleCellBean> sub1, List<ProjectListCellBean> sub2) {
     return HotArticleState()
       ..hotArticleDataSource = sub0
-      ..commArticleDataSource = sub1;
+      ..commArticleDataSource = sub1
+      ..projectDataSource = sub2;
   }
 
   @override
@@ -86,9 +85,15 @@ class HotArticleConnector extends Reselect2<IndexState, HotArticleState,
   }
 
   @override
+  List<ProjectListCellBean> getSub2(IndexState state) {
+    return state.projectListDataSource;
+  }
+
+  @override
   void set(IndexState state, HotArticleState subState) {
     subState..commArticleDataSource = state.commArticleDataSource;
     subState..hotArticleDataSource = state.hotArticleDataSource;
+    subState..projectDataSource = state.projectListDataSource;
   }
 }
 
@@ -111,7 +116,6 @@ class BannerConnector extends Reselect1<IndexState, BannerState, List<Data>> {
 }
 
 /// classify模块的连接器
-
 class ClassifyConnector
     extends Reselect1<IndexState, ClassifyState, List<ClassifyData>> {
   @override

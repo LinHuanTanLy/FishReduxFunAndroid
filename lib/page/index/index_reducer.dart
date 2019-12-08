@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/domain/entity/ClassifyBean.dart';
 import 'package:flutter_android_fun/domain/entity/CommArticleBean.dart';
-import 'package:flutter_android_fun/domain/entity/HotArticleBean.dart';
+import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
 
 import 'index_action.dart';
 import 'index_state.dart';
@@ -10,6 +11,7 @@ Reducer<IndexState> buildReducer() {
   return asReducer(
     <Object, Reducer<IndexState>>{
       IndexAction.action: _onAction,
+      IndexAction.initScreenInfo: _onInitScreenInfo,
       IndexAction.updateBannerDataSource: _onUpdateBannerDataSource,
       IndexAction.updateClassifySource: _onUpdateClassifyDataSource,
       IndexAction.updateHotArticleSource: _onUpdateHotArticleDataSource,
@@ -17,6 +19,15 @@ Reducer<IndexState> buildReducer() {
       IndexAction.updateProjectSource: _onUpdateProjectDataSource,
     },
   );
+}
+
+IndexState _onInitScreenInfo(IndexState state, Action action) {
+  final IndexState newState = state.clone();
+  Size size = action.payload;
+  newState
+    ..screenH = size?.height
+    ..screenW = size?.width;
+  return newState;
 }
 
 IndexState _onAction(IndexState state, Action action) {
@@ -45,7 +56,10 @@ IndexState _onUpdateIndexArticleDataSource(IndexState state, Action action) {
 
 IndexState _onUpdateProjectDataSource(IndexState state, Action action) {
   final IndexState newState = state.clone();
-  newState.projectListDataSource = action.payload;
+  List<ProjectListCellBean> tempProjectListDataSource = action.payload;
+  newState.projectListDataSource = tempProjectListDataSource.length > 5
+      ? tempProjectListDataSource.getRange(0, 5).toList()
+      : tempProjectListDataSource;
   return newState;
 }
 

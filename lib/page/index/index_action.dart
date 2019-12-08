@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
 import 'package:flutter_android_fun/domain/entity/ClassifyBean.dart';
 import 'package:flutter_android_fun/domain/entity/CommArticleBean.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
 
 enum IndexAction {
   action,
+  initScreenInfo,
   updateBannerDataSource,
   updateClassifySource,
   updateHotArticleSource,
@@ -17,6 +19,10 @@ enum IndexAction {
 class IndexActionCreator {
   static Action onAction() {
     return const Action(IndexAction.action);
+  }
+
+  static Action onInitScreenInfo(Size size) {
+    return Action(IndexAction.initScreenInfo, payload: size);
   }
 
   static Action onUpdateBannerSource(List<Data> list) {
