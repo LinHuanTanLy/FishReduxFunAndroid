@@ -80,12 +80,49 @@ Widget buildView(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          '项目推荐',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: ColorConf.Color48586D),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              '项目推荐',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: ColorConf.Color48586D),
+            ),
+            Expanded(
+              child: Container(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  padding: const EdgeInsets.only(left: 20, top: 2, bottom: 2),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      gradient: LinearGradient(colors: <Color>[
+                        Colors.white,
+                        Color(0xffD5F5EE),
+                      ])),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        '全部',
+                        style: TextStyle(
+                            fontSize: 10, color: ColorConf.color18C8A1),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'images/icon_right_arrow.png',
+                          height: 10,
+                        ),
+                        margin: const EdgeInsets.only(left: 6, right: 6),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
         Container(
           margin: const EdgeInsets.only(bottom: 18),
@@ -98,13 +135,52 @@ Widget buildView(
             ),
           ),
         ),
-        Text(
-          '首页文章',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: ColorConf.Color48586D),
+
+         Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              '首页文章',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: ColorConf.Color48586D),
+            ),
+            Expanded(
+              child: Container(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  padding: const EdgeInsets.only(left: 20, top: 2, bottom: 2),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      gradient: LinearGradient(colors: <Color>[
+                        Colors.white,
+                        Color(0xffD5F5EE),
+                      ])),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        '全部',
+                        style: TextStyle(
+                            fontSize: 10, color: ColorConf.color18C8A1),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'images/icon_right_arrow.png',
+                          height: 10,
+                        ),
+                        margin: const EdgeInsets.only(left: 6, right: 6),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
+       
       ],
     ),
   );
