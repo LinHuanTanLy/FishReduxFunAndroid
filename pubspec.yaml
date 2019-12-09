@@ -26,6 +26,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_swiper: ^1.1.6
   pull_to_refresh: ^1.5.7
+  webview_flutter: ^0.3.17
 dev_dependencies:
   flutter_test:
     sdk: flutter

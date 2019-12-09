@@ -7,6 +7,7 @@ import 'page/index/index_page.dart';
 import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
 import 'page/second/second_page.dart';
+import 'page/web/web_page.dart';
 
 /// 创建应用的根 Widget
 /// 1. 创建一个简单的路由，并注册页面
@@ -24,6 +25,7 @@ class AppRoute {
           'login': LoginPage(),
           'second': SecondPage(),
           'index': IndexPage(),
+          'webView':WebLoadPage()
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系

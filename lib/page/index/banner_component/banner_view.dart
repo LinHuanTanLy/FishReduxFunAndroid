@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+import 'banner_action.dart';
 import 'banner_state.dart';
 
 Widget buildView(
@@ -10,7 +11,6 @@ Widget buildView(
     children: <Widget>[
       Container(
         child: Swiper(
-          
           duration: 5,
           transformer: ScaleAndFadeTransformer(),
           autoplay: state.bannerDataSource.isNotEmpty,
@@ -20,7 +20,10 @@ Widget buildView(
                 '${state.bannerDataSource[index].imagePath}',
                 fit: BoxFit.fill,
               ),
-              onTap: () {},
+              onTap: () {
+                dispatch(BannerActionCreator.onToWebView(
+                    state.bannerDataSource[index]?.url));
+              },
             );
           },
           itemCount: state.bannerDataSource.length,
