@@ -15,6 +15,8 @@ import 'index_state.dart';
 Effect<IndexState> buildEffect() {
   return combineEffects(<Object, Effect<IndexState>>{
     IndexAction.action: _onAction,
+    IndexAction.onRefresh: _onRefresh,
+    IndexAction.onLoadMore: _onLoadMore,
     Lifecycle.initState: _onInitState,
     Lifecycle.build: _onBuild,
   });
@@ -34,6 +36,24 @@ void _onBuild(Action action, Context<IndexState> ctx) {
 }
 
 void _onInitState(Action action, Context<IndexState> ctx) {
+  _initRequest(action, ctx);
+}
+
+void _onRefresh(Action action, Context<IndexState> ctx) {
+  _initRequest(action, ctx);
+}
+
+void _onLoadMore(Action action, Context<IndexState> ctx) {
+  int _tempPageNum = ctx.state.mPageSize++;
+  DioUtils.getInstance().doGet('article/list/$_tempPageNum/json', (data) {
+    CommArticleBean _bean = CommArticleBean.fromJson(data);
+    ctx.dispatch(
+        IndexActionCreator.updateIndexArticleSource(_bean?.data?.datas ?? []));
+
+  });
+}
+
+_initRequest(Action action, Context<IndexState> ctx) {
   DioUtils.getInstance().doGet("banner/json", (data) {
     BannerInfoBean _bean = BannerInfoBean.fromJson(data);
     ctx.dispatch(IndexActionCreator.onUpdateBannerSource(_bean?.data ?? []));

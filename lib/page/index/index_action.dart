@@ -14,11 +14,21 @@ enum IndexAction {
   updateHotArticleSource,
   updateIndexArticleSource,
   updateProjectSource,
+  onLoadMore,
+  onRefresh,
 }
 
 class IndexActionCreator {
   static Action onAction() {
     return const Action(IndexAction.action);
+  }
+
+  static Action onLoadMore() {
+    return Action(IndexAction.onLoadMore);
+  }
+
+  static Action onRefresh() {
+    return const Action(IndexAction.onRefresh);
   }
 
   static Action onInitScreenInfo(Size size) {

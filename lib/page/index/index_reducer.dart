@@ -38,6 +38,7 @@ IndexState _onAction(IndexState state, Action action) {
 IndexState _onUpdateBannerDataSource(IndexState state, Action action) {
   final IndexState newState = state.clone();
   newState.bannerDataSource = action.payload;
+  newState..mPageSize = 0;
   return newState;
 }
 
@@ -50,7 +51,21 @@ IndexState _onUpdateHotArticleDataSource(IndexState state, Action action) {
 IndexState _onUpdateIndexArticleDataSource(IndexState state, Action action) {
   final IndexState newState = state.clone();
   List<CommArticleCellBean> _tempList = action.payload;
-  newState.commArticleDataSource = (_tempList);
+  List<CommArticleCellBean> _temp = state.commArticleDataSource ?? [];
+  if (state.mPageSize == 0) {
+    newState.commArticleDataSource = _tempList;
+  } else {
+    _temp.addAll(_tempList);
+    newState.commArticleDataSource = _temp;
+  }
+
+  /// 结束刷新
+  if (_tempList != null && _tempList.isNotEmpty == true) {
+    state.mRefreshController.loadComplete();
+  } else {
+    state.mRefreshController.loadNoData();
+  }
+  newState.mPageSize = state.mPageSize++;
   return newState;
 }
 
@@ -60,6 +75,9 @@ IndexState _onUpdateProjectDataSource(IndexState state, Action action) {
   newState.projectListDataSource = tempProjectListDataSource.length > 5
       ? tempProjectListDataSource.getRange(0, 5).toList()
       : tempProjectListDataSource;
+
+  /// 结束刷新
+  state.mRefreshController.refreshCompleted();
   return newState;
 }
 
