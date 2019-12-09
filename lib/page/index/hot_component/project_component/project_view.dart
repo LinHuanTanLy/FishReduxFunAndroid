@@ -14,7 +14,7 @@ Widget buildView(
         height: 90,
         padding: const EdgeInsets.only(left: 14, right: 14),
         margin: const EdgeInsets.only(right: 14, top: 10),
-        width: state.screenW ?? 400 * 0.85,
+        width: state.screenW * 0.85,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: DecorationImage(
@@ -135,8 +135,7 @@ Widget buildView(
             ),
           ),
         ),
-
-         Row(
+        Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
@@ -180,7 +179,6 @@ Widget buildView(
             )
           ],
         ),
-       
       ],
     ),
   );

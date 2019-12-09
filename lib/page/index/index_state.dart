@@ -58,20 +58,24 @@ IndexState initState(Map<String, dynamic> args) {
     ..projectListDataSource = [];
 }
 
-/// 热门置顶文章连接器
-class HotArticleConnector extends Reselect3<
+class HotArticleConnector extends Reselect4<
     IndexState,
     HotArticleState,
     List<HotArticleCellBean>,
     List<CommArticleCellBean>,
-    List<ProjectListCellBean>> {
+    List<ProjectListCellBean>,
+    Size> {
   @override
-  HotArticleState computed(List<HotArticleCellBean> sub0,
-      List<CommArticleCellBean> sub1, List<ProjectListCellBean> sub2) {
+  HotArticleState computed(
+      List<HotArticleCellBean> sub0,
+      List<CommArticleCellBean> sub1,
+      List<ProjectListCellBean> sub2,
+      Size sub3) {
     return HotArticleState()
       ..hotArticleDataSource = sub0
       ..commArticleDataSource = sub1
-      ..projectDataSource = sub2;
+      ..projectDataSource = sub2
+      ..size = sub3;
   }
 
   @override
@@ -90,12 +94,56 @@ class HotArticleConnector extends Reselect3<
   }
 
   @override
+  Size getSub3(IndexState state) {
+    return Size(state.screenW, state.screenH);
+  }
+
+  @override
   void set(IndexState state, HotArticleState subState) {
     subState..commArticleDataSource = state.commArticleDataSource;
     subState..hotArticleDataSource = state.hotArticleDataSource;
     subState..projectDataSource = state.projectListDataSource;
+    subState..size = Size(state.screenW, state.screenH);
   }
 }
+// /// 热门置顶文章连接器
+// class HotArticleConnector extends Reselect3<
+//     IndexState,
+//     HotArticleState,
+//     List<HotArticleCellBean>,
+//     List<CommArticleCellBean>,
+//     List<ProjectListCellBean>> {
+//   @override
+//   HotArticleState computed(List<HotArticleCellBean> sub0,
+//       List<CommArticleCellBean> sub1, List<ProjectListCellBean> sub2) {
+//     return HotArticleState()
+//       ..hotArticleDataSource = sub0
+//       ..commArticleDataSource = sub1
+//       ..projectDataSource = sub2;
+//   }
+
+//   @override
+//   List<HotArticleCellBean> getSub0(IndexState state) {
+//     return state.hotArticleDataSource;
+//   }
+
+//   @override
+//   List<CommArticleCellBean> getSub1(IndexState state) {
+//     return state.commArticleDataSource;
+//   }
+
+//   @override
+//   List<ProjectListCellBean> getSub2(IndexState state) {
+//     return state.projectListDataSource;
+//   }
+
+//   @override
+//   void set(IndexState state, HotArticleState subState) {
+//     subState..commArticleDataSource = state.commArticleDataSource;
+//     subState..hotArticleDataSource = state.hotArticleDataSource;
+//     subState..projectDataSource = state.projectListDataSource;
+//   }
+// }
 
 /// banner模块的连接器
 class BannerConnector extends Reselect1<IndexState, BannerState, List<Data>> {

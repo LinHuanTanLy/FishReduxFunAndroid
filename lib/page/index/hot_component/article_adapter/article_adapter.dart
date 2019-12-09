@@ -30,8 +30,12 @@ class _ArticleAdapterConnector extends ConnOp<HotArticleState, List<ItemBean>> {
         .map((e) => ItemBean(
             "article_cell", ArticleCellState()..hotArticleCellBean = e))
         .toList());
-    _tempList.add(ItemBean("hot_project_cell",
-        ProjectState()..projectListDataSource = state.projectDataSource));
+    _tempList.add(ItemBean(
+        "hot_project_cell",
+        ProjectState()
+          ..projectListDataSource = state.projectDataSource
+          ..screenW = state.size?.width
+          ..screenH = state.size?.height));
     _tempList.addAll(state.commArticleDataSource
         .map((e) =>
             ItemBean("comm_article_cell", CommArticleCellState()..cellBean = e))
@@ -44,7 +48,6 @@ class _ArticleAdapterConnector extends ConnOp<HotArticleState, List<ItemBean>> {
 
   @override
   subReducer(reducer) {
-    // TODO: implement subReducer
     return super.subReducer(reducer);
   }
 }
