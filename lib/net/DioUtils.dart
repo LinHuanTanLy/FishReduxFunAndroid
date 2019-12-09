@@ -24,8 +24,19 @@ class DioUtils {
     _dio.options.baseUrl = EnvConf.url;
     _dio.options.connectTimeout = 15000;
     _dio.options.receiveTimeout = 15000;
+    _dio.options.headers = getHeaders();
     _dio.interceptors.add(LogInterceptor(responseBody: true)); //是否开启请求日志
 //    dio.interceptors.add(CookieManager(CookieJar()));//缓存相关类，具体设置见https://github.com/flutterchina/cookie_jar
+  }
+
+  getHeaders() {
+    return {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'Authorization': "**",
+      'User-Aagent': "4.1.0;android;6.0.1;default;A001",
+      "HZUID": "2",
+    };
   }
 
   doGet(String url, Function success,

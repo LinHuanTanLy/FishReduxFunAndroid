@@ -21,8 +21,10 @@ Widget buildView(
                 fit: BoxFit.fill,
               ),
               onTap: () {
-                dispatch(BannerActionCreator.onToWebView(
-                    state.bannerDataSource[index]?.url));
+                dispatch(BannerActionCreator.onToWebView({
+                  'url': state.bannerDataSource[index]?.url,
+                  'title': state.bannerDataSource[index]?.title
+                }));
               },
             );
           },

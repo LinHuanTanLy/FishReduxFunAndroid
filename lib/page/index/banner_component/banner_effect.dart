@@ -14,5 +14,9 @@ Effect<BannerState> buildEffect() {
 void _onAction(Action action, Context<BannerState> ctx) {}
 
 void _onToWebView(Action action, Context<BannerState> ctx) {
-  Navigator.pushNamed(ctx.context, "webView");
+  dynamic params = action.payload;
+  String url = params['url'];
+  String title = params['title'];
+  Navigator.pushNamed(ctx.context, "webView",
+      arguments: {"url": url, "title": title});
 }

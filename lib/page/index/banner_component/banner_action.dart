@@ -7,7 +7,7 @@ class BannerActionCreator {
     return const Action(BannerAction.action);
   }
 
-  static Action onToWebView(String url) {
+  static Action onToWebView(dynamic url) {
     return Action(BannerAction.toWebView, payload: url);
   }
 }

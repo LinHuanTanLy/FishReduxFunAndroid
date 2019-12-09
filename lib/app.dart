@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 
+import 'conf/ColorConf.dart';
 import 'global_state/global_state.dart';
 import 'global_state/global_store.dart';
 import 'page/index/index_page.dart';
@@ -25,7 +26,7 @@ class AppRoute {
           'login': LoginPage(),
           'second': SecondPage(),
           'index': IndexPage(),
-          'webView':WebLoadPage()
+          'webView': WebLoadPage()
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系
@@ -87,7 +88,7 @@ Widget createApp() {
     title: '玩安卓',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primarySwatch: Colors.blue,
+      primarySwatch: ColorConf.themeColor,
     ),
     home: routes.buildPage('home', null),
     onGenerateRoute: (RouteSettings settings) {

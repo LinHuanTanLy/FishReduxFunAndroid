@@ -108,7 +108,7 @@ Widget buildView(
                       Text(
                         '全部',
                         style: TextStyle(
-                            fontSize: 10, color: ColorConf.color18C8A1),
+                            fontSize: 10, color: ColorConf.Color18C8A1),
                       ),
                       Container(
                         child: Image.asset(
@@ -163,7 +163,7 @@ Widget buildView(
                       Text(
                         '全部',
                         style: TextStyle(
-                            fontSize: 10, color: ColorConf.color18C8A1),
+                            fontSize: 10, color: ColorConf.Color18C8A1),
                       ),
                       Container(
                         child: Image.asset(
