@@ -1,8 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_android_fun/domain/entity/ArticleListBean.dart';
 
-//TODO replace with your own action
-enum AuthorArticleAction { action, updateArticleList }
+enum AuthorArticleAction { action, updateArticleList, refresh, loadmore }
 
 class AuthorArticleActionCreator {
   static Action onAction() {
@@ -11,5 +10,13 @@ class AuthorArticleActionCreator {
 
   static Action onUpdateArticleList(List<ArticleCellChildList> tempList) {
     return Action(AuthorArticleAction.updateArticleList, payload: tempList);
+  }
+
+  static Action onRefresh() {
+    return const Action(AuthorArticleAction.refresh);
+  }
+
+  static Action onLoadMore() {
+    return const Action(AuthorArticleAction.loadmore);
   }
 }

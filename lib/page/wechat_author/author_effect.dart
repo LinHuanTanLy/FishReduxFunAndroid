@@ -23,5 +23,12 @@ void _onInitState(Action action, Context<AuthorState> ctx) {
         ctx.stfState as StateWithTickerProvider;
     ctx.state.tabController =
         TabController(length: _bean?.data?.length ?? 0, vsync: tickerProvider);
+
+    var result =
+        _bean?.data?.singleWhere((item) => item.id == ctx.state.defIndexId);
+    var index = _bean?.data?.indexOf(result);
+    if (index != -1) {
+      ctx.state.tabController.animateTo(index);
+    }
   });
 }

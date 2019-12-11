@@ -27,5 +27,13 @@ AuthorArticleState _onUpdateArticleList(
   } else {
     newState.listForArticleList.addAll(_listForArticleList);
   }
+  newState.pageNum++;
+
+  if (state.pageNum == 1) {
+    state.mRefreshController.refreshCompleted();
+  } else {
+    state.mRefreshController.loadComplete();
+  }
+
   return newState;
 }
