@@ -9,6 +9,8 @@ import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
 import 'page/second/second_page.dart';
 import 'page/web/web_page.dart';
+import 'page/wechat_author/author_article_page/article_list_page.dart';
+import 'page/wechat_author/author_page.dart';
 
 /// 创建应用的根 Widget
 /// 1. 创建一个简单的路由，并注册页面
@@ -22,11 +24,26 @@ class AppRoute {
     if (_global == null) {
       _global = PageRoutes(
         pages: <String, Page<Object, dynamic>>{
+          /// 首页
           'home': MainPage(),
+
+          /// 登录页面
           'login': LoginPage(),
+
+          /// 首页的第二个tab
           'second': SecondPage(),
+
+          /// 首页的第一个tab
           'index': IndexPage(),
-          'webView': WebLoadPage()
+
+          /// webView页面
+          'webView': WebLoadPage(),
+
+          /// 微信公众号列表页面
+          'wechat_author': AuthorPage(),
+
+          /// 微信公众号文章列表页面
+          'wechat_author_article': AuthorArticlePage()
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系

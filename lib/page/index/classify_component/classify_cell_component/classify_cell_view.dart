@@ -7,36 +7,43 @@ import 'classify_cell_state.dart';
 
 Widget buildView(
     ClassifyCellState state, Dispatch dispatch, ViewService viewService) {
-  return Container(
-    alignment: Alignment.center,
-    child: Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-            child: Container(
-                child: ClipOval(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: new Image.asset(
-                    '${state?.imgForPic}',
-                    fit: BoxFit.fill,
+  return GestureDetector(
+    child: Container(
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+              child: Container(
+                  child: ClipOval(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: new Image.asset(
+                      '${state?.imgForPic}',
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                decoration: BoxDecoration(
-                    border: Border.all(color: ColorConf.ColorF6f6f6, width: 2),
-                    borderRadius: BorderRadius.circular(50)))),
-        Container(
-          child: Text(
-            '${state?.classifyData?.name}',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 10, color: ColorConf.Color48586D),
-          ),
-          margin: const EdgeInsets.only(top: 4),
-        )
-      ],
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: ColorConf.ColorF6f6f6, width: 2),
+                      borderRadius: BorderRadius.circular(50)))),
+          Container(
+            child: Text(
+              '${state?.classifyData?.name}',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 10, color: ColorConf.Color48586D),
+            ),
+            margin: const EdgeInsets.only(top: 4),
+          )
+        ],
+      ),
     ),
+    onTap: () {
+      dispatch(
+          ClassifyCellActionCreator.onToAuthorPage(state?.classifyData?.id));
+    },
   );
 //  return Container(
 //    child: Column(
