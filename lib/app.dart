@@ -7,6 +7,7 @@ import 'global_state/global_store.dart';
 import 'page/index/index_page.dart';
 import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
+import 'page/register/page.dart';
 import 'page/second/second_page.dart';
 import 'page/web/web_page.dart';
 import 'page/wechat_author/author_article_page/article_list_page.dart';
@@ -29,6 +30,9 @@ class AppRoute {
 
           /// 登录页面
           'login': LoginPage(),
+
+          /// 注册页面
+          'register': RegisterPage(),
 
           /// 首页的第二个tab
           'second': SecondPage(),
@@ -55,13 +59,18 @@ class AppRoute {
             page.connectExtraStore<GlobalState>(GlobalStore.store,
                 (Object pageState, GlobalState appState) {
               final GlobalBaseState p = pageState;
-              if (p.themeColor != appState.themeColor) {
+//              if (p.themeColor != appState.themeColor &&
+//                  p.ifLogin != appState.ifLogin) {
                 if (pageState is Cloneable) {
+                  print('修改--进行复制');
                   final Object copy = pageState.clone();
                   final GlobalBaseState newState = copy;
                   newState.themeColor = appState.themeColor;
+                  newState.ifLogin = appState.ifLogin;
+                  newState.screenH = appState.screenH;
+                  newState.screenW = appState.screenW;
                   return newState;
-                }
+//                }
               }
               return pageState;
             });

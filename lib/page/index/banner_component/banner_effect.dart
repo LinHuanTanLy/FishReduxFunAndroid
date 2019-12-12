@@ -8,6 +8,7 @@ Effect<BannerState> buildEffect() {
   return combineEffects(<Object, Effect<BannerState>>{
     BannerAction.action: _onAction,
     BannerAction.toWebView: _onToWebView,
+    BannerAction.toLogin: _onToLogin,
   });
 }
 
@@ -19,4 +20,8 @@ void _onToWebView(Action action, Context<BannerState> ctx) {
   String title = params['title'];
   Navigator.pushNamed(ctx.context, "webView",
       arguments: {"url": url, "title": title});
+}
+
+void _onToLogin(Action action, Context<BannerState> ctx) {
+  Navigator.pushNamed(ctx.context, "login", arguments: null);
 }

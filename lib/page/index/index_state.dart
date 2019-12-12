@@ -33,6 +33,7 @@ class IndexState implements GlobalBaseState, Cloneable<IndexState> {
 
   /// 页面下标
   int mPageSize;
+
   @override
   IndexState clone() {
     return IndexState()
@@ -42,19 +43,21 @@ class IndexState implements GlobalBaseState, Cloneable<IndexState> {
       ..hotArticleDataSource = hotArticleDataSource
       ..commArticleDataSource = commArticleDataSource
       ..projectListDataSource = projectListDataSource
-      ..screenH = screenH
-      ..screenW = screenW
-      ..mPageSize = 0;
+      ..mPageSize = 0
+      ..ifLogin = ifLogin;
   }
+
+  @override
+  Color themeColor;
+
+  @override
+  bool ifLogin;
 
   @override
   double screenH;
 
   @override
   double screenW;
-
-  @override
-  Color themeColor;
 }
 
 IndexState initState(Map<String, dynamic> args) {
@@ -83,24 +86,37 @@ class HotArticleConnector extends ConnOp<IndexState, HotArticleState> {
   }
 }
 
-
-/// banner模块的连接器
-class BannerConnector extends Reselect1<IndexState, BannerState, List<Data>> {
+class BannerConnector extends ConnOp<IndexState, BannerState>
+    with ReselectMixin<IndexState, BannerState> {
   @override
-  BannerState computed(List<Data> state) {
-    return BannerState()..bannerDataSource = state;
+  BannerState computed(IndexState state) {
+    return BannerState()
+      ..bannerDataSource = state.bannerDataSource
+      ..loginStatus = state.ifLogin;
   }
 
   @override
-  List<Data> getSub0(IndexState state) {
-    return state.bannerDataSource;
-  }
-
-  @override
-  void set(IndexState state, BannerState subState) {
-    subState.bannerDataSource = state.bannerDataSource;
+  List factors(IndexState state) {
+    return [state.bannerDataSource, state.ifLogin];
   }
 }
+///// banner模块的连接器
+//class BannerConnector extends Reselect1<IndexState, BannerState, List<Data>> {
+//  @override
+//  BannerState computed(List<Data> state) {
+//    return BannerState()..bannerDataSource = state;
+//  }
+//
+//  @override
+//  List<Data> getSub0(IndexState state) {
+//    return state.bannerDataSource;
+//  }
+//
+//  @override
+//  void set(IndexState state, BannerState subState) {
+//    subState.bannerDataSource = state.bannerDataSource;
+//  }
+//}
 
 /// classify模块的连接器
 class ClassifyConnector

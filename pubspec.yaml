@@ -26,9 +26,11 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_swiper: ^1.1.6
   pull_to_refresh: ^1.5.7
-#  webview_flutter: ^0.3.17
+  fluttertoast: ^3.1.3
+  #  webview_flutter: ^0.3.17
   flutter_webview_plugin: ^0.3.9+1
-dev_dependencies:
+  shared_preferences: ^0.4.1
+#dev_dependencies:
   flutter_test:
     sdk: flutter
 
@@ -45,21 +47,21 @@ flutter:
   uses-material-design: true
 
   assets:
-   - images/icon_index.png
-   - images/icon_second.png
-   - images/author_pic0.jpg
-   - images/author_pic1.jpg
-   - images/author_pic2.jpg
-   - images/author_pic3.jpg
-   - images/author_pic4.jpg
-   - images/author_pic5.jpg
-   - images/author_pic6.jpg
-   - images/author_pic7.jpg
-   - images/author_pic8.jpg
-   - images/author_pic9.jpg
-   - images/icon_more.png
-   - images/icon_hot_flag.png
-   - images/icon_right_arrow.png
+    - images/icon_index.png
+    - images/icon_second.png
+    - images/author_pic0.jpg
+    - images/author_pic1.jpg
+    - images/author_pic2.jpg
+    - images/author_pic3.jpg
+    - images/author_pic4.jpg
+    - images/author_pic5.jpg
+    - images/author_pic6.jpg
+    - images/author_pic7.jpg
+    - images/author_pic8.jpg
+    - images/author_pic9.jpg
+    - images/icon_more.png
+    - images/icon_hot_flag.png
+    - images/icon_right_arrow.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

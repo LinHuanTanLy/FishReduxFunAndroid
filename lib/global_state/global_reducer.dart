@@ -10,6 +10,7 @@ Reducer<GlobalState> buildReducer() {
       GlobalAction.changeThemeColor: _onchangeThemeColor,
       GlobalAction.updateGlobalH: _onUpdateGlobalH,
       GlobalAction.updateGlobalW: _onUpdateGlobalW,
+      GlobalAction.updateLoginStatus: _onUpdateLoginStatus,
     },
   );
 }
@@ -26,6 +27,13 @@ GlobalState _onUpdateGlobalW(GlobalState state, Action action) {
   final double w = action.payload;
   debugPrint('修改系统宽度---$w');
   return state.clone()..screenW = w;
+}
+
+GlobalState _onUpdateLoginStatus(GlobalState state, Action action) {
+  debugPrint('修改用户登录状态');
+  final ifLogin = action.payload;
+  debugPrint('修改用户登录状态 ifLogin =$ifLogin');
+  return state..ifLogin = ifLogin;
 }
 
 GlobalState _onUpdateGlobalH(GlobalState state, Action action) {

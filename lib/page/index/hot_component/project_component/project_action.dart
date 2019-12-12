@@ -1,7 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum ProjectAction { action, initW }
+enum ProjectAction {
+  action,
+  initW,
+  toProjectPage,
+  toWebViewPage,
+}
 
 class ProjectActionCreator {
   static Action onAction() {
@@ -9,6 +13,14 @@ class ProjectActionCreator {
   }
 
   static Action onInitW(double w) {
-    return  Action(ProjectAction.initW, payload: w);
+    return Action(ProjectAction.initW, payload: w);
+  }
+
+  static Action onToProjectPage() {
+    return Action(ProjectAction.toProjectPage);
+  }
+
+  static Action onToWebViewPage(dynamic params) {
+    return Action(ProjectAction.toWebViewPage, payload: params);
   }
 }

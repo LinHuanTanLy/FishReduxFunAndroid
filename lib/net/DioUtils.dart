@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_android_fun/utils/SpUtils.dart';
 
 import 'EnvConf.dart';
 
 class DioUtils {
   static DioUtils _dioUtils;
+  static var _cookie;
   Dio _dio = Dio();
 
   String _methodGet = "get";
@@ -59,6 +61,9 @@ class DioUtils {
       if (params == null) {
         params = Map();
       }
+      if (_cookie != null) {
+        params['Cookie'] = _cookie;
+      }
       if (method == _methodGet) {
         _response = await _dio.get(url, queryParameters: params);
       } else {
@@ -66,7 +71,14 @@ class DioUtils {
         if (params != null && params.isNotEmpty == true) {
           _forData = FormData.fromMap(params);
         }
+        print('_forData is ${params.toString()}');
         _response = await _dio.post(url, data: _forData);
+      }
+      _cookie = _response.headers['set-cookie'];
+      if (_cookie != null) {
+        SpUtils.putString('cookie', _cookie).then((bool) {
+          print('保存cookie 的结果是 $bool , and the cookie is $_cookie');
+        });
       }
     } on DioError catch (e) {
       Response _errorResponse;

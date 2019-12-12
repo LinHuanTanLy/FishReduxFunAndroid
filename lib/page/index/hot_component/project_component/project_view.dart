@@ -91,35 +91,40 @@ Widget buildView(
                   color: ColorConf.Color48586D),
             ),
             Expanded(
-              child: Container(
-                alignment: Alignment.centerRight,
+              child: GestureDetector(
                 child: Container(
-                  padding: const EdgeInsets.only(left: 20, top: 2, bottom: 2),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      gradient: LinearGradient(colors: <Color>[
-                        Colors.white,
-                        Color(0xffD5F5EE),
-                      ])),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        '全部',
-                        style: TextStyle(
-                            fontSize: 10, color: ColorConf.Color18C8A1),
-                      ),
-                      Container(
-                        child: Image.asset(
-                          'images/icon_right_arrow.png',
-                          height: 10,
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 20, top: 2, bottom: 2),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        gradient: LinearGradient(colors: <Color>[
+                          Colors.white,
+                          Color(0xffD5F5EE),
+                        ])),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          '全部',
+                          style: TextStyle(
+                              fontSize: 10, color: ColorConf.Color18C8A1),
                         ),
-                        margin: const EdgeInsets.only(left: 6, right: 6),
-                      )
-                    ],
+                        Container(
+                          child: Image.asset(
+                            'images/icon_right_arrow.png',
+                            height: 10,
+                          ),
+                          margin: const EdgeInsets.only(left: 6, right: 6),
+                        )
+                      ],
+                    ),
                   ),
                 ),
+                onTap: () {
+                  dispatch(ProjectActionCreator.onToProjectPage());
+                },
               ),
             )
           ],
@@ -130,7 +135,13 @@ Widget buildView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: state.projectListDataSource
-                  .map((e) => _renderProjectCell(e))
+                  .map((e) => GestureDetector(
+                        child: _renderProjectCell(e),
+                        onTap: () {
+                          dispatch(ProjectActionCreator.onToWebViewPage(
+                              {"url": e?.link, "title": e?.title}));
+                        },
+                      ))
                   .toList(),
             ),
           ),
@@ -145,38 +156,38 @@ Widget buildView(
                   fontWeight: FontWeight.bold,
                   color: ColorConf.Color48586D),
             ),
-            Expanded(
-              child: Container(
-                alignment: Alignment.centerRight,
-                child: Container(
-                  padding: const EdgeInsets.only(left: 20, top: 2, bottom: 2),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      gradient: LinearGradient(colors: <Color>[
-                        Colors.white,
-                        Color(0xffD5F5EE),
-                      ])),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        '全部',
-                        style: TextStyle(
-                            fontSize: 10, color: ColorConf.Color18C8A1),
-                      ),
-                      Container(
-                        child: Image.asset(
-                          'images/icon_right_arrow.png',
-                          height: 10,
-                        ),
-                        margin: const EdgeInsets.only(left: 6, right: 6),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            )
+            // Expanded(
+            //   child: Container(
+            //     alignment: Alignment.centerRight,
+            //     child: Container(
+            //       padding: const EdgeInsets.only(left: 20, top: 2, bottom: 2),
+            //       decoration: BoxDecoration(
+            //           borderRadius: BorderRadius.circular(8),
+            //           gradient: LinearGradient(colors: <Color>[
+            //             Colors.white,
+            //             Color(0xffD5F5EE),
+            //           ])),
+            //       child: Row(
+            //         mainAxisSize: MainAxisSize.min,
+            //         mainAxisAlignment: MainAxisAlignment.end,
+            //         children: <Widget>[
+            //           Text(
+            //             '全部',
+            //             style: TextStyle(
+            //                 fontSize: 10, color: ColorConf.Color18C8A1),
+            //           ),
+            //           Container(
+            //             child: Image.asset(
+            //               'images/icon_right_arrow.png',
+            //               height: 10,
+            //             ),
+            //             margin: const EdgeInsets.only(left: 6, right: 6),
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ],

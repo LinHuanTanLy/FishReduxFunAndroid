@@ -1,10 +1,26 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum loginAction { action }
+enum LoginAction {
+  action,
+  toRegister,
+  toLogin,
+  toFinish,
+}
 
-class loginActionCreator {
+class LoginActionCreator {
   static Action onAction() {
-    return const Action(loginAction.action);
+    return const Action(LoginAction.action);
+  }
+
+  static Action onToRegister() {
+    return const Action(LoginAction.toRegister);
+  }
+
+  static Action onToLogin() {
+    return const Action(LoginAction.toLogin);
+  }
+
+  static Action onToFinish() {
+    return const Action(LoginAction.toFinish);
   }
 }

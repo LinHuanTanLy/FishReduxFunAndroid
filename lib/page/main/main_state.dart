@@ -4,7 +4,6 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/global_state/global_state.dart';
 
-
 class MainState implements GlobalBaseState, Cloneable<MainState> {
   double iconSize = 22;
   int currIndex = 0;
@@ -13,7 +12,8 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
   MainState clone() {
     return MainState()
       ..currIndex = currIndex
-      ..iconSize = iconSize;
+      ..iconSize = iconSize
+      ..ifLogin = ifLogin;
   }
 
   @override
@@ -24,12 +24,11 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
 
   @override
   Color themeColor;
+
+  @override
+  bool ifLogin;
 }
 
 MainState initState(Map<String, dynamic> args) {
   return MainState();
 }
-
-
-
-
