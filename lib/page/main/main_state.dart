@@ -8,12 +8,17 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
   double iconSize = 22;
   int currIndex = 0;
 
+  /// 菜单列表
+  List<String> menuList;
+  TabController tabControllerForMenu;
   @override
   MainState clone() {
     return MainState()
       ..currIndex = currIndex
       ..iconSize = iconSize
-      ..ifLogin = ifLogin;
+      ..ifLogin = ifLogin
+      ..menuList = menuList
+      ..tabControllerForMenu = tabControllerForMenu;
   }
 
   @override
@@ -33,5 +38,5 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
 }
 
 MainState initState(Map<String, dynamic> args) {
-  return MainState();
+  return MainState()..menuList = ['我的', '好文', '休闲'];
 }

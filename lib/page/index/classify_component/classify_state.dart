@@ -13,7 +13,7 @@ class ClassifyState implements Cloneable<ClassifyState> {
     'images/author_pic6.jpg',
     'images/author_pic7.jpg',
     'images/author_pic8.jpg',
-    'images/icon_more.png'
+    'images/author_pic9.jpg'
   ];
 
   @override

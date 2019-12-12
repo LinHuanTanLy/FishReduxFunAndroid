@@ -54,7 +54,7 @@ Widget buildView(
             ),
             Expanded(
                 child: Container(
-              margin: const EdgeInsets.only(left: 50, right: 50, top: 10),
+              margin: const EdgeInsets.only(left: 30, right: 30, top: 20),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(8)),
               alignment: Alignment.topCenter,

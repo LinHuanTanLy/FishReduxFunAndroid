@@ -19,9 +19,9 @@ Widget buildView(
               child: Container(
                   child: ClipOval(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: new Image.asset(
+                    child: Image.asset(
                       '${state?.imgForPic}',
-                      fit: BoxFit.fill,
+                      fit: BoxFit.contain,
                     ),
                   ),
                   decoration: BoxDecoration(

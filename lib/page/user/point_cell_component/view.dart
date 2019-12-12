@@ -8,6 +8,7 @@ import 'state.dart';
 Widget buildView(
     PointCellState state, Dispatch dispatch, ViewService viewService) {
   return Container(
+    padding: const EdgeInsets.only(left: 16,right: 16,top:10,bottom: 10),
     alignment: Alignment.center,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,7 +19,7 @@ Widget buildView(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('${state.pointCell?.reason}'),
-            Expanded(child: Text('+ ${state?.pointCell?.coinCount}'))
+            Expanded(child: Container(child: Text('+ ${state?.pointCell?.coinCount}'),alignment: Alignment.centerRight,))
           ],
         )
       ],

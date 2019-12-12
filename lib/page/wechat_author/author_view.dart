@@ -17,20 +17,25 @@ Widget buildView(
         ),
         bottom: PreferredSize(
             child: state.listForMenu.length > 0
-                ? TabBar(
-                    labelColor: ColorConf.ColorFFFFFF,
-                    controller: state.tabController,
-                    isScrollable: true,
-                    tabs: state.listForMenu.map((e) => Text(e?.name)).toList())
+                ? Container(
+                    height: 40,
+                    child: TabBar(
+                        labelColor: ColorConf.ColorFFFFFF,
+                        controller: state.tabController,
+                        isScrollable: true,
+                        tabs: state.listForMenu
+                            .map((e) => Text(e?.name))
+                            .toList()),
+                  )
                 : Container(),
-            preferredSize: Size.fromHeight(41))),
+            preferredSize: Size.fromHeight(40))),
     body: state.listForMenu.length > 0
         ? TabBarView(
             controller: state.tabController,
             children: state.listForMenu
                 .map(
-                  (e) => AppRoute.global.buildPage(
-                      'wechat_author_article', {'courseId': e.id}),
+                  (e) => AppRoute.global
+                      .buildPage('wechat_author_article', {'courseId': e.id}),
                 )
                 .toList())
         : Container(),
