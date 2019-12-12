@@ -44,7 +44,8 @@ class IndexState implements GlobalBaseState, Cloneable<IndexState> {
       ..commArticleDataSource = commArticleDataSource
       ..projectListDataSource = projectListDataSource
       ..mPageSize = 0
-      ..ifLogin = ifLogin;
+      ..ifLogin = ifLogin
+      ..userPoint = userPoint;
   }
 
   @override
@@ -58,6 +59,9 @@ class IndexState implements GlobalBaseState, Cloneable<IndexState> {
 
   @override
   double screenW;
+
+  @override
+  int userPoint;
 }
 
 IndexState initState(Map<String, dynamic> args) {
@@ -86,18 +90,20 @@ class HotArticleConnector extends ConnOp<IndexState, HotArticleState> {
   }
 }
 
+///// banner模块的连接器
 class BannerConnector extends ConnOp<IndexState, BannerState>
     with ReselectMixin<IndexState, BannerState> {
   @override
   BannerState computed(IndexState state) {
     return BannerState()
       ..bannerDataSource = state.bannerDataSource
-      ..loginStatus = state.ifLogin;
+      ..loginStatus = state.ifLogin
+      ..userPoint = state.userPoint;
   }
 
   @override
   List factors(IndexState state) {
-    return [state.bannerDataSource, state.ifLogin];
+    return [state.bannerDataSource, state.ifLogin, state.userPoint];
   }
 }
 ///// banner模块的连接器

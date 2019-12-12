@@ -10,7 +10,11 @@ abstract class GlobalBaseState {
 
   bool get ifLogin;
 
+  int get userPoint;
+
   set themeColor(Color color);
+
+  set userPoint(int point);
 
   set screenW(double d);
 
@@ -28,13 +32,17 @@ class GlobalState implements GlobalBaseState, Cloneable<GlobalState> {
   double screenH;
   @override
   bool ifLogin;
-
+  @override
+  int userPoint;
   @override
   GlobalState clone() {
     return GlobalState()
       ..themeColor = themeColor
       ..screenW = screenW
       ..screenH = screenH
-      ..ifLogin = ifLogin;
+      ..ifLogin = ifLogin
+      ..userPoint = userPoint;
   }
+
+
 }

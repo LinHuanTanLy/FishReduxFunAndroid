@@ -61,8 +61,10 @@ class DioUtils {
       if (params == null) {
         params = Map();
       }
+      print('_cookie is $_cookie');
       if (_cookie != null) {
-        params['Cookie'] = _cookie;
+//        params['Cookie'] = _cookie;
+        _dio.options.headers['Cookie'] = _cookie.toString();
       }
       if (method == _methodGet) {
         _response = await _dio.get(url, queryParameters: params);

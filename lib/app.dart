@@ -69,6 +69,7 @@ class AppRoute {
                   newState.ifLogin = appState.ifLogin;
                   newState.screenH = appState.screenH;
                   newState.screenW = appState.screenW;
+                  newState.userPoint=appState.userPoint;
                   return newState;
 //                }
               }

@@ -27,6 +27,9 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
 
   @override
   bool ifLogin;
+
+  @override
+  int userPoint;
 }
 
 MainState initState(Map<String, dynamic> args) {

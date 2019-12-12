@@ -56,7 +56,7 @@ Widget buildView(
             : Row(
                 children: <Widget>[
                   Text(
-                    '您的积分：18888',
+                    '您的积分：${state.userPoint}',
                     style: TextStyle(fontSize: 13, color: Colors.white),
                   ),
                   Expanded(

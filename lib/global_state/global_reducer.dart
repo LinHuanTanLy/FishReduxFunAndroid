@@ -11,6 +11,7 @@ Reducer<GlobalState> buildReducer() {
       GlobalAction.updateGlobalH: _onUpdateGlobalH,
       GlobalAction.updateGlobalW: _onUpdateGlobalW,
       GlobalAction.updateLoginStatus: _onUpdateLoginStatus,
+      GlobalAction.updateUserPoint:_onUpdateGlobalPoint,
     },
   );
 }
@@ -41,6 +42,13 @@ GlobalState _onUpdateGlobalH(GlobalState state, Action action) {
   final double h = action.payload;
   debugPrint('修改系统高度---$h');
   return state.clone()..screenH = h;
+}
+
+GlobalState _onUpdateGlobalPoint(GlobalState state, Action action) {
+  debugPrint('修改用户积分');
+  final int point = action.payload;
+  debugPrint('修改用户积分----$point');
+  return state.clone()..userPoint = point;
 }
 
 GlobalState _onchangeThemeColor(GlobalState state, Action action) {

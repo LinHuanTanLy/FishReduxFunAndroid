@@ -6,11 +6,15 @@ enum GlobalAction {
   updateGlobalH,
   updateLoginStatus,
   toLoginPage,
+  updateUserPoint,
 }
 
 class GlobalActionCreator {
   static Action onChangeThemeColor() {
     return const Action(GlobalAction.changeThemeColor);
+  }
+  static Action onUpdateUserPoint(int userPoint) {
+    return  Action(GlobalAction.updateUserPoint,payload: userPoint);
   }
 
   static Action onUpdateGlobalH(double h) {

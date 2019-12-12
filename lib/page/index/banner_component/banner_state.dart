@@ -6,11 +6,13 @@ import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
 class BannerState implements Cloneable<BannerState> {
   List<Data> bannerDataSource;
   bool loginStatus;
+  int userPoint;
 
   @override
   BannerState clone() {
     return BannerState()
       ..bannerDataSource = bannerDataSource
-      ..loginStatus = loginStatus;
+      ..loginStatus = loginStatus
+      ..userPoint = userPoint;
   }
 }

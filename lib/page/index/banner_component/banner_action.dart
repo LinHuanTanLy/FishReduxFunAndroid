@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 
-enum BannerAction { action, toWebView, toLogin }
+enum BannerAction { action, toWebView, toLogin, updatePoint }
 
 class BannerActionCreator {
   static Action onAction() {
@@ -13,5 +13,9 @@ class BannerActionCreator {
 
   static Action onToLogin() {
     return Action(BannerAction.toLogin);
+  }
+
+  static Action onUpdatePoint(int point) {
+    return Action(BannerAction.updatePoint, payload: point);
   }
 }

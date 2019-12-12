@@ -8,11 +8,17 @@ Reducer<BannerState> buildReducer() {
   return asReducer(
     <Object, Reducer<BannerState>>{
       BannerAction.action: _onAction,
+      BannerAction.updatePoint:_onUpdatePoint,
     },
   );
 }
 
 BannerState _onAction(BannerState state, Action action) {
   final BannerState newState = state.clone();
+  return newState;
+}
+BannerState _onUpdatePoint(BannerState state, Action action) {
+  final BannerState newState = state.clone();
+  newState..userPoint=action.payload;
   return newState;
 }

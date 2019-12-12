@@ -5,9 +5,11 @@ import 'package:flutter_android_fun/domain/entity/ClassifyBean.dart';
 import 'package:flutter_android_fun/domain/entity/CommArticleBean.dart';
 import 'package:flutter_android_fun/domain/entity/HotArticleBean.dart';
 import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
+import 'package:flutter_android_fun/domain/entity/UserPointBean.dart';
 import 'package:flutter_android_fun/global_state/global_action.dart';
 import 'package:flutter_android_fun/global_state/global_store.dart';
 import 'package:flutter_android_fun/net/DioUtils.dart';
+import 'package:flutter_android_fun/utils/ToastUtils.dart';
 
 import 'index_action.dart';
 import 'index_state.dart';
@@ -33,6 +35,17 @@ void _onBuild(Action action, Context<IndexState> ctx) {
     GlobalStore.store
         .dispatch(GlobalActionCreator.onUpdateGlobalH(size.height));
   }
+
+  if (ctx.state.ifLogin != null && ctx.state.ifLogin)
+    DioUtils.getInstance().doGet('lg/coin/userinfo/json', (data) {
+      UserPointBean _bean = UserPointBean.fromJson(data);
+      println('_bean is ${_bean.data.coinCount}');
+      if (_bean?.data?.coinCount != ctx.state.userPoint)
+        GlobalStore.store.dispatch(
+            GlobalActionCreator.onUpdateUserPoint(_bean?.data?.coinCount));
+    }, error: (data) {
+      ToastUtils.showTs(data);
+    });
 }
 
 void _onInitState(Action action, Context<IndexState> ctx) {
@@ -49,7 +62,6 @@ void _onLoadMore(Action action, Context<IndexState> ctx) {
     CommArticleBean _bean = CommArticleBean.fromJson(data);
     ctx.dispatch(
         IndexActionCreator.updateIndexArticleSource(_bean?.data?.datas ?? []));
-
   });
 }
 

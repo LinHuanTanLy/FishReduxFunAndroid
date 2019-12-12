@@ -9,6 +9,6 @@ class SpUtils {
 
   static getString(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(key);
+    return prefs.getStringList(key);
   }
 }

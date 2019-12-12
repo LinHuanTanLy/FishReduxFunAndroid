@@ -28,6 +28,9 @@ class LoginState implements GlobalBaseState, Cloneable<LoginState> {
 
   @override
   Color themeColor;
+
+  @override
+  int userPoint;
 }
 
 LoginState initState(Map<String, dynamic> args) {
