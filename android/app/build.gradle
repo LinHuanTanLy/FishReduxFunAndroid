@@ -27,7 +27,9 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 28
-
+  //添加这两行
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
