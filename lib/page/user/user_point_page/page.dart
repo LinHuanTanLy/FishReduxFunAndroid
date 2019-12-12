@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/page/user/point_list_adapter/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -16,7 +17,7 @@ class UserPointPage extends Page<UserPointState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<UserPointState>(
-              adapter: null, slots: <String, Dependent<UserPointState>>{}),
+              adapter: NoneConn<UserPointState>()+PointListAdapter(), slots: <String, Dependent<UserPointState>>{}),
           middleware: <Middleware<UserPointState>>[],
         );
 }
