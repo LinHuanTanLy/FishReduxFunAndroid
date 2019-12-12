@@ -35,7 +35,6 @@ void _onBuild(Action action, Context<IndexState> ctx) {
     GlobalStore.store
         .dispatch(GlobalActionCreator.onUpdateGlobalH(size.height));
   }
-
   if (ctx.state.ifLogin != null && ctx.state.ifLogin)
     DioUtils.getInstance().doGet('lg/coin/userinfo/json', (data) {
       UserPointBean _bean = UserPointBean.fromJson(data);

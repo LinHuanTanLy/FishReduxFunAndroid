@@ -28,6 +28,7 @@ class DioUtils {
     _dio.options.receiveTimeout = 15000;
     _dio.options.headers = getHeaders();
     _dio.interceptors.add(LogInterceptor(responseBody: true)); //是否开启请求日志
+
 //    dio.interceptors.add(CookieManager(CookieJar()));//缓存相关类，具体设置见https://github.com/flutterchina/cookie_jar
   }
 
@@ -42,28 +43,41 @@ class DioUtils {
   }
 
   doGet(String url, Function success,
-      {Map<String, dynamic> params, Function error}) {
+      {Map<String, dynamic> params,
+      Function error,
+      bool ifNeedSaveCookie = false}) {
     _requestHttp(url, params, success,
-        errorCallback: error, method: _methodGet);
+        errorCallback: error,
+        method: _methodGet,
+        ifNeedSaveCookie: ifNeedSaveCookie);
   }
 
   doPost(String url, Function success,
-      {Map<String, dynamic> params, Function error}) {
+      {Map<String, dynamic> params,
+      Function error,
+      bool ifNeedSaveCookie = false}) {
     _requestHttp(url, params, success,
-        errorCallback: error, method: _methodPost);
+        errorCallback: error,
+        method: _methodPost,
+        ifNeedSaveCookie: ifNeedSaveCookie);
   }
 
   _requestHttp(
       String url, Map<String, dynamic> params, Function successCallback,
-      {String method, Function errorCallback}) async {
+      {String method,
+      Function errorCallback,
+      bool ifNeedSaveCookie = false}) async {
+    if (_cookie == null) {
+      _cookie = await SpUtils.getStringList('cookie');
+      print('_cookie is $_cookie');
+    }
     Response _response;
     try {
       if (params == null) {
         params = Map();
       }
-      print('_cookie is $_cookie');
       if (_cookie != null) {
-//        params['Cookie'] = _cookie;
+        params['Cookie'] = _cookie;
         _dio.options.headers['Cookie'] = _cookie.toString();
       }
       if (method == _methodGet) {
@@ -76,11 +90,13 @@ class DioUtils {
         print('_forData is ${params.toString()}');
         _response = await _dio.post(url, data: _forData);
       }
-      _cookie = _response.headers['set-cookie'];
-      if (_cookie != null) {
-        SpUtils.putString('cookie', _cookie).then((bool) {
-          print('保存cookie 的结果是 $bool , and the cookie is $_cookie');
-        });
+      if (ifNeedSaveCookie ?? false) {
+        _cookie = _response.headers['set-cookie'];
+        if (_cookie != null) {
+          SpUtils.putStringList('cookie', _cookie).then((bool) {
+            print('保存cookie 的结果是 $bool , and the cookie is $_cookie');
+          });
+        }
       }
     } on DioError catch (e) {
       Response _errorResponse;
@@ -95,7 +111,9 @@ class DioUtils {
     }
     String dataStr = json.encode(_response.data);
     Map<String, dynamic> dataMap = json.decode(dataStr);
+
     if (dataMap == null || dataMap['errorCode'] != 0) {
+      print('url is --------------------------------$url');
       _errBack(errorCallback, dataMap["errorMsg"] ?? '网络不给力');
     } else {
       successCallback(dataMap);

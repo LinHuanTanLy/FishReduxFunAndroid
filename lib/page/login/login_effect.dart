@@ -53,5 +53,8 @@ _requestLogin(
     GlobalStore.store.dispatch(GlobalActionCreator.onUpdateLoginStatus(true));
 //    GlobalStore.store.dispatch(GlobalActionCreator.onChangeThemeColor());
     ctx.dispatch(LoginActionCreator.onToFinish());
-  }, params: {"username": account, "password": pass}, error: () {});
+  },
+      params: {"username": account, "password": pass},
+      error: () {},
+      ifNeedSaveCookie: true);
 }

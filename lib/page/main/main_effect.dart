@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_android_fun/global_state/global_action.dart';
 import 'package:flutter_android_fun/global_state/global_store.dart';
+import 'package:flutter_android_fun/utils/SpUtils.dart';
 
 import 'main_action.dart';
 import 'main_state.dart';
@@ -20,5 +21,12 @@ void _onClickTab(Action action, Context<MainState> ctx) {
 void _onAction(Action action, Context<MainState> ctx) {}
 
 void _onInitState(Action action, Context<MainState> ctx) {
-//  GlobalStore.store.dispatch(GlobalActionCreator.onUpdateLoginStatus(false));
+  SpUtils.getStringList('cookie').then((data) {
+    if (data != null) {
+      GlobalStore.store.dispatch(GlobalActionCreator.onUpdateLoginStatus(true));
+    } else {
+      GlobalStore.store
+          .dispatch(GlobalActionCreator.onUpdateLoginStatus(false));
+    }
+  });
 }

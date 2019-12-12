@@ -10,6 +10,7 @@ Effect<BannerState> buildEffect() {
     BannerAction.action: _onAction,
     BannerAction.toWebView: _onToWebView,
     BannerAction.toLogin: _onToLogin,
+    BannerAction.toPointPage: _onToPointPage,
     Lifecycle.build: _onInitState,
   });
 }
@@ -17,8 +18,7 @@ Effect<BannerState> buildEffect() {
 void _onAction(Action action, Context<BannerState> ctx) {}
 
 void _onInitState(Action action, Context<BannerState> ctx) {
-
-  ctx.dispatch(BannerActionCreator.onUpdatePoint(199999));
+//  ctx.dispatch(BannerActionCreator.onUpdatePoint(199999));
 }
 
 void _onToWebView(Action action, Context<BannerState> ctx) {
@@ -31,4 +31,8 @@ void _onToWebView(Action action, Context<BannerState> ctx) {
 
 void _onToLogin(Action action, Context<BannerState> ctx) {
   Navigator.pushNamed(ctx.context, "login", arguments: null);
+}
+
+void _onToPointPage(Action action, Context<BannerState> ctx) {
+  Navigator.pushNamed(ctx.context, "user_point", arguments: null);
 }

@@ -9,6 +9,7 @@ import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
 import 'page/register/page.dart';
 import 'page/second/second_page.dart';
+import 'page/user/user_point_page/page.dart';
 import 'page/web/web_page.dart';
 import 'page/wechat_author/author_article_page/article_list_page.dart';
 import 'page/wechat_author/author_page.dart';
@@ -47,7 +48,10 @@ class AppRoute {
           'wechat_author': AuthorPage(),
 
           /// 微信公众号文章列表页面
-          'wechat_author_article': AuthorArticlePage()
+          'wechat_author_article': AuthorArticlePage(),
+
+          /// 用户积分
+          'user_point': UserPointPage()
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系
@@ -61,16 +65,16 @@ class AppRoute {
               final GlobalBaseState p = pageState;
 //              if (p.themeColor != appState.themeColor &&
 //                  p.ifLogin != appState.ifLogin) {
-                if (pageState is Cloneable) {
-                  print('修改--进行复制');
-                  final Object copy = pageState.clone();
-                  final GlobalBaseState newState = copy;
-                  newState.themeColor = appState.themeColor;
-                  newState.ifLogin = appState.ifLogin;
-                  newState.screenH = appState.screenH;
-                  newState.screenW = appState.screenW;
-                  newState.userPoint=appState.userPoint;
-                  return newState;
+              if (pageState is Cloneable) {
+                print('修改--进行复制');
+                final Object copy = pageState.clone();
+                final GlobalBaseState newState = copy;
+                newState.themeColor = appState.themeColor;
+                newState.ifLogin = appState.ifLogin;
+                newState.screenH = appState.screenH;
+                newState.screenW = appState.screenW;
+                newState.userPoint = appState.userPoint;
+                return newState;
 //                }
               }
               return pageState;
