@@ -5,6 +5,8 @@ import 'conf/ColorConf.dart';
 import 'global_state/global_state.dart';
 import 'global_state/global_store.dart';
 import 'page/index/index_page.dart';
+import 'page/index/project_list_page/page.dart';
+import 'page/index/project_list_page/project_child_page/page.dart';
 import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
 import 'page/register/page.dart';
@@ -40,6 +42,12 @@ class AppRoute {
 
           /// 首页的第一个tab
           'index': IndexPage(),
+
+          ///项目目录
+          'project_list': ProjectListPage(),
+
+          /// 项目子目录
+          'project_child_list': ProjectChildPage(),
 
           /// webView页面
           'webView': WebLoadPage(),

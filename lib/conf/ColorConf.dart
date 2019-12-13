@@ -4,7 +4,7 @@ class ColorConf {
   static const Color48586D = Color(0XFF48586D);
   static const Color8048586D = Color(0X8048586D);
   static const ColorF6f6f6 = Color(0XffF6F6F6);
-  static const Color18C8A1 = Color(0xffE81F63);
+  static const Color18C8A1 = Color(0xff18c8a1);
   static const ColorFFFFFF = Color(0XFFFFFFFF);
 
   static const MaterialColor themeColor = MaterialColor(

@@ -19,7 +19,10 @@ void _onBuild(Action action, Context<ProjectState> ctx) {
   ctx.dispatch(ProjectActionCreator.onInitW(w));
 }
 
-void _onToProjectPage(Action action, Context<ProjectState> ctx) {}
+void _onToProjectPage(Action action, Context<ProjectState> ctx) {
+  Navigator.pushNamed(ctx.context, 'project_list');
+}
+
 void _onToWebViewPage(Action action, Context<ProjectState> ctx) {
   dynamic params = action.payload;
   String url = params['url'];
