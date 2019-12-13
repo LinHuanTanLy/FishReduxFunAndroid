@@ -11,7 +11,7 @@ Reducer<GlobalState> buildReducer() {
       GlobalAction.updateGlobalH: _onUpdateGlobalH,
       GlobalAction.updateGlobalW: _onUpdateGlobalW,
       GlobalAction.updateLoginStatus: _onUpdateLoginStatus,
-      GlobalAction.updateUserPoint:_onUpdateGlobalPoint,
+      GlobalAction.updateUserPoint: _onUpdateGlobalPoint,
     },
   );
 }
@@ -34,7 +34,13 @@ GlobalState _onUpdateLoginStatus(GlobalState state, Action action) {
   debugPrint('修改用户登录状态');
   final ifLogin = action.payload;
   debugPrint('修改用户登录状态 ifLogin =$ifLogin');
-  return state..ifLogin = ifLogin;
+  if (state.themeColor == null) {
+    return state
+      ..ifLogin = ifLogin
+      ..themeColor = Color(0xffE81F63);
+  } else {
+    return state..ifLogin = ifLogin;
+  }
 }
 
 GlobalState _onUpdateGlobalH(GlobalState state, Action action) {

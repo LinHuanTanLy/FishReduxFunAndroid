@@ -23,7 +23,8 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(left: 16, right: 16),
+            contentPadding:
+                const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
             border: InputBorder.none,
             hintText: hintStr,
             hintStyle: TextStyle(fontSize: 14, color: ColorConf.Color8048586D)),
@@ -67,7 +68,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
               ],
             ),
             decoration: BoxDecoration(
-                color: ColorConf.Color18C8A1,
+                color: state.themeColor,
                 borderRadius:
                     BorderRadius.only(bottomLeft: Radius.circular(80))),
           ),
@@ -87,7 +88,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                 '尚无账号，点击去注册',
                 style: TextStyle(
                     fontSize: 12,
-                    color: ColorConf.Color18C8A1,
+                    color: state.themeColor,
                     decoration: TextDecoration.underline),
               ),
             ),
@@ -106,7 +107,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
               ),
               padding: const EdgeInsets.only(
                   left: 120, right: 120, top: 10, bottom: 10),
-              color: ColorConf.Color18C8A1,
+              color: state.themeColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             ),

@@ -35,16 +35,7 @@ void _onBuild(Action action, Context<IndexState> ctx) {
     GlobalStore.store
         .dispatch(GlobalActionCreator.onUpdateGlobalH(size.height));
   }
-  if (ctx.state.ifLogin != null && ctx.state.ifLogin)
-    DioUtils.getInstance().doGet('lg/coin/userinfo/json', (data) {
-      UserPointBean _bean = UserPointBean.fromJson(data);
-      println('_bean is ${_bean.data.coinCount}');
-      if (_bean?.data?.coinCount != ctx.state.userPoint)
-        GlobalStore.store.dispatch(
-            GlobalActionCreator.onUpdateUserPoint(_bean?.data?.coinCount));
-    }, error: (data) {
-      ToastUtils.showTs(data);
-    });
+ 
 }
 
 void _onInitState(Action action, Context<IndexState> ctx) {
@@ -64,6 +55,7 @@ void _onLoadMore(Action action, Context<IndexState> ctx) {
   });
 }
 
+/// 请求网络
 _initRequest(Action action, Context<IndexState> ctx) {
   DioUtils.getInstance().doGet("banner/json", (data) {
     BannerInfoBean _bean = BannerInfoBean.fromJson(data);
