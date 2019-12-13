@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/domain/entity/ProjectSingleListBean.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -18,10 +19,16 @@ ProjectChildState _onAction(ProjectChildState state, Action action) {
 }
 
 ProjectChildState _onUpdateProjectList(ProjectChildState state, Action action) {
-
   print('更新数据------------newState..dataSourceForList=${action.payload}');
-
+  List<ProjectSingleCell> dataSourceForList = action.payload;
   final ProjectChildState newState = state.clone();
-  newState..dataSourceForList = action.payload;
+  if (state.pageNum == 1) {
+    newState..dataSourceForList = dataSourceForList;
+    state.refreshController.refreshCompleted();
+  } else {
+    newState..dataSourceForList.addAll(dataSourceForList);
+    state.refreshController.loadComplete();
+  }
+
   return newState;
 }

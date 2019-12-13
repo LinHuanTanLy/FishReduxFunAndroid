@@ -2,8 +2,6 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
-import 'package:flutter_android_fun/page/index/hot_component/article_adapter/article_adapter_action.dart';
-import 'package:flutter_android_fun/page/wechat_author/author_article_page/article_cell_component/action.dart';
 import 'package:flutter_android_fun/widget/KeepAliveWidget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'article_list_action.dart';
