@@ -50,9 +50,12 @@ Widget buildView(
                               )
                             ],
                           ),
-                          Text('总积分为${state?.userPoint}',
-                              style: TextStyle(
-                                  fontSize: 12, color: ColorConf.Color8048586D))
+                          Container(
+                              child: Text('总积分为${state?.userPoint}',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: ColorConf.Color8048586D)),
+                              margin: const EdgeInsets.only(top: 4))
                         ],
                       ),
                     ),
@@ -74,9 +77,13 @@ Widget buildView(
                               )
                             ],
                           ),
-                          Text('当前排名${state?.userBean?.data?.rank}',
-                              style: TextStyle(
-                                  fontSize: 12, color: ColorConf.Color8048586D))
+                          Container(
+                            child: Text('当前排名${state?.userBean?.data?.rank}',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: ColorConf.Color8048586D)),
+                            margin: const EdgeInsets.only(top: 4),
+                          )
                         ],
                       ),
                     ),
@@ -89,13 +96,34 @@ Widget buildView(
         : Container();
   }
 
+  /// 渲染子分页item
+  Widget _initTopMenuItem({String iconStr, String str}) {
+    return Expanded(
+      child: Column(
+        children: <Widget>[
+          Image.asset(
+            iconStr ?? 'images/icon_second.png',
+            color: state.themeColor,
+            width: 34,
+            height: 34,
+          ),
+          Container(
+            child: Text(str ?? '我的收藏',
+                style: TextStyle(fontSize: 12, color: Colors.black)),
+            margin: const EdgeInsets.only(top: 4),
+          )
+        ],
+      ),
+    );
+  }
+
   return SingleChildScrollView(
     child: Column(
       children: <Widget>[
         Container(
           padding: const EdgeInsets.all(20),
           margin:
-              const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 10),
+              const EdgeInsets.only(left: 14, right: 14, top: 20, bottom: 10),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -106,6 +134,16 @@ Widget buildView(
                     blurRadius: 16)
               ]),
           child: _initUserInfoWidget(),
+        ),
+        Container(
+          child: Row(
+            children: <Widget>[
+              _initTopMenuItem(iconStr: 'images/icon_second.png', str: '收藏网址'),
+              _initTopMenuItem(iconStr: 'images/icon_history.png', str: '收藏文章'),
+              _initTopMenuItem(iconStr: 'images/icon_coffee.png', str: '我的分享'),
+            ],
+          ),
+          margin: const EdgeInsets.only(top: 10),
         )
       ],
     ),

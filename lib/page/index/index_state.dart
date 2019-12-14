@@ -43,7 +43,7 @@ class IndexState implements GlobalBaseState, Cloneable<IndexState> {
       ..hotArticleDataSource = hotArticleDataSource
       ..commArticleDataSource = commArticleDataSource
       ..projectListDataSource = projectListDataSource
-      ..mPageSize = 0
+      ..mPageSize = mPageSize
       ..ifLogin = ifLogin
       ..userPoint = userPoint;
   }

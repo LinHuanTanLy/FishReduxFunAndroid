@@ -47,8 +47,8 @@ void _onRefresh(Action action, Context<IndexState> ctx) {
 }
 
 void _onLoadMore(Action action, Context<IndexState> ctx) {
-  int _tempPageNum = ctx.state.mPageSize++;
-  DioUtils.getInstance().doGet('article/list/$_tempPageNum/json', (data) {
+//  ToastUtils.showTs('pageSize is ${ctx.state.mPageSize}');
+  DioUtils.getInstance().doGet('article/list/${ctx.state.mPageSize}/json', (data) {
     CommArticleBean _bean = CommArticleBean.fromJson(data);
     ctx.dispatch(
         IndexActionCreator.updateIndexArticleSource(_bean?.data?.datas ?? []));

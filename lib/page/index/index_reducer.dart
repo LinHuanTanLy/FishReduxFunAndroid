@@ -51,21 +51,26 @@ IndexState _onUpdateHotArticleDataSource(IndexState state, Action action) {
 IndexState _onUpdateIndexArticleDataSource(IndexState state, Action action) {
   final IndexState newState = state.clone();
   List<CommArticleCellBean> _tempList = action.payload;
-  List<CommArticleCellBean> _temp = state.commArticleDataSource ?? [];
-  if (state.mPageSize == 0) {
-    newState.commArticleDataSource = _tempList;
-  } else {
-    _temp.addAll(_tempList);
-    newState.commArticleDataSource = _temp;
+
+  if (_tempList.isNotEmpty == true) {
+    if (state.mPageSize == 0) {
+      newState.commArticleDataSource = _tempList;
+    } else {
+      newState.commArticleDataSource.addAll(_tempList);
+    }
   }
+  print('state.mPageSize=${state.mPageSize}');
+  print('newState.mPageSize=${newState.mPageSize}');
+  newState.mPageSize = state.mPageSize + 1;
+  print('newState.mPageSize=${newState.mPageSize}');
 
   /// 结束刷新
-  if (_tempList != null && _tempList.isNotEmpty == true) {
+  // if (_tempList != null && _tempList.isNotEmpty == true) {
     state.mRefreshController.loadComplete();
-  } else {
-    state.mRefreshController.loadNoData();
-  }
-  newState.mPageSize = state.mPageSize++;
+  // } else {
+    // state.mRefreshController.loadComplete();
+    // state.mRefreshController.loadNoData();
+  // }
   return newState;
 }
 
