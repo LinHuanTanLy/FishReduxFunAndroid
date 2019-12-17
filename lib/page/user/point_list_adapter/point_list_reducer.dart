@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_android_fun/page/user/user_point_page/state.dart';
+import 'package:flutter_android_fun/page/user/user_point_page/user_point_state.dart';
 
-import 'action.dart';
+import 'point_list_action.dart';
 
 Reducer<UserPointState> buildReducer() {
   return asReducer(

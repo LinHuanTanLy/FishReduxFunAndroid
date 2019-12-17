@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 
 import '../article_list_state.dart';
-import 'action.dart';
+import 'article_adapter_action.dart';
 
 
 Reducer<AuthorArticleState> buildReducer() {

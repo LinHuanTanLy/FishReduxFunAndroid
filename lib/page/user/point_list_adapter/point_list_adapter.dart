@@ -1,9 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_android_fun/page/user/point_cell_component/component.dart';
-import 'package:flutter_android_fun/page/user/point_cell_component/state.dart';
-import 'package:flutter_android_fun/page/user/user_point_page/state.dart';
+import 'package:flutter_android_fun/page/user/point_cell_component/point_cell_component.dart';
+import 'package:flutter_android_fun/page/user/point_cell_component/point_cell_state.dart';
+import 'package:flutter_android_fun/page/user/user_point_page/user_point_state.dart';
 
-import 'reducer.dart';
+import 'point_list_reducer.dart';
 
 class PointListAdapter extends DynamicFlowAdapter<UserPointState> {
   PointListAdapter()

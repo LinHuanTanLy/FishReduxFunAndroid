@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'action.dart';
-import 'state.dart';
+import 'point_cell_action.dart';
+import 'point_cell_state.dart';
 
 Reducer<PointCellState> buildReducer() {
   return asReducer(

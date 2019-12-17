@@ -1,9 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'effect.dart';
-import 'reducer.dart';
-import 'state.dart';
-import 'view.dart';
+import 'article_cell_effect.dart';
+import 'article_cell_reducer.dart';
+import 'article_cell_state.dart';
+import 'article_cell_view.dart';
 
 class ArticleCellComponent extends Component<ArticleAuthorCellState> {
   ArticleCellComponent()

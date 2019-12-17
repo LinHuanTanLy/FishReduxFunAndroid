@@ -2,8 +2,8 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
 
-import 'action.dart';
-import 'state.dart';
+import 'article_cell_action.dart';
+import 'article_cell_state.dart';
 
 Widget buildView(
     ArticleAuthorCellState state, Dispatch dispatch, ViewService viewService) {

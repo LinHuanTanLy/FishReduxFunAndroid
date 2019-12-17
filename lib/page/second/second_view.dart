@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/page/second/second_action.dart';
 
 import 'second_state.dart';
 
@@ -33,6 +34,7 @@ Widget buildView(
                 child: Row(
                   children: <Widget>[
                     Expanded(
+                        child: GestureDetector(
                       child: Column(
                         children: <Widget>[
                           Row(
@@ -58,8 +60,12 @@ Widget buildView(
                               margin: const EdgeInsets.only(top: 4))
                         ],
                       ),
-                    ),
+                      onTap: () {
+                        dispatch(SecondActionCreator.onToSeeCredits());
+                      },
+                    )),
                     Expanded(
+                        child: GestureDetector(
                       child: Column(
                         children: <Widget>[
                           Row(
@@ -86,7 +92,10 @@ Widget buildView(
                           )
                         ],
                       ),
-                    ),
+                      onTap: () {
+                        dispatch(SecondActionCreator.onToSeeRank());
+                      },
+                    )),
                   ],
                 ),
                 margin: const EdgeInsets.only(top: 20),
@@ -97,22 +106,25 @@ Widget buildView(
   }
 
   /// 渲染子分页item
-  Widget _initTopMenuItem({String iconStr, String str}) {
+  Widget _initTopMenuItem({String iconStr, String str, Function function}) {
     return Expanded(
-      child: Column(
-        children: <Widget>[
-          Image.asset(
-            iconStr ?? 'images/icon_second.png',
-            color: state.themeColor,
-            width: 34,
-            height: 34,
-          ),
-          Container(
-            child: Text(str ?? '我的收藏',
-                style: TextStyle(fontSize: 12, color: Colors.black)),
-            margin: const EdgeInsets.only(top: 4),
-          )
-        ],
+      child: GestureDetector(
+        child: Column(
+          children: <Widget>[
+            Image.asset(
+              iconStr ?? 'images/icon_second.png',
+              color: state.themeColor,
+              width: 34,
+              height: 34,
+            ),
+            Container(
+              child: Text(str ?? '我的收藏',
+                  style: TextStyle(fontSize: 12, color: Colors.black)),
+              margin: const EdgeInsets.only(top: 4),
+            )
+          ],
+        ),
+        onTap: function,
       ),
     );
   }
@@ -138,9 +150,19 @@ Widget buildView(
         Container(
           child: Row(
             children: <Widget>[
-              _initTopMenuItem(iconStr: 'images/icon_second.png', str: '收藏网址'),
-              _initTopMenuItem(iconStr: 'images/icon_history.png', str: '收藏文章'),
-              _initTopMenuItem(iconStr: 'images/icon_coffee.png', str: '我的分享'),
+              _initTopMenuItem(
+                  iconStr: 'images/icon_second.png',
+                  str: '收藏网址',
+                  function: dispatch(SecondActionCreator.onToSeeCollection())),
+              _initTopMenuItem(
+                  iconStr: 'images/icon_history.png',
+                  str: '收藏文章',
+                  function:
+                      dispatch(SecondActionCreator.onToArticleCollection())),
+              _initTopMenuItem(
+                  iconStr: 'images/icon_coffee.png',
+                  str: '我的分享',
+                  function: dispatch(SecondActionCreator.onToSeeShare())),
             ],
           ),
           margin: const EdgeInsets.only(top: 10),

@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'article_adapter/adapter.dart';
+import 'article_adapter/article_adapter.dart';
 import 'article_list_effect.dart';
 import 'article_list_reducer.dart';
 import 'article_list_state.dart';

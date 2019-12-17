@@ -1,9 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_android_fun/page/wechat_author/author_article_page/article_cell_component/component.dart';
-import 'package:flutter_android_fun/page/wechat_author/author_article_page/article_cell_component/state.dart';
+import 'package:flutter_android_fun/page/wechat_author/author_article_page/article_cell_component/article_cell_component.dart';
+import 'package:flutter_android_fun/page/wechat_author/author_article_page/article_cell_component/article_cell_state.dart';
 
 import '../article_list_state.dart';
-import 'reducer.dart';
+import 'article_adapter_reducer.dart';
 
 class ArticleListAdapter extends DynamicFlowAdapter<AuthorArticleState> {
   ArticleListAdapter()

@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
-import 'action.dart';
-import 'state.dart';
+import 'article_cell_action.dart';
+import 'article_cell_state.dart';
 
 Effect<ArticleAuthorCellState> buildEffect() {
   return combineEffects(<Object, Effect<ArticleAuthorCellState>>{

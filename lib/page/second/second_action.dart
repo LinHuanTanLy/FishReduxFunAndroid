@@ -28,6 +28,26 @@ class SecondActionCreator {
     return const Action(SecondAction.action);
   }
 
+  static Action onToSeeCredits() {
+    return const Action(SecondAction.toSeeCredits);
+  }
+
+  static Action onToSeeRank() {
+    return const Action(SecondAction.toSeeRank);
+  }
+
+  static Action onToSeeCollection() {
+    return const Action(SecondAction.toWebCollection);
+  }
+
+  static Action onToArticleCollection() {
+    return const Action(SecondAction.toArticleCollection);
+  }
+
+  static Action onToSeeShare() {
+    return const Action(SecondAction.toSeeShare);
+  }
+
   static Action onGetUserInfo(UserPointBean userPointBean) {
     return Action(SecondAction.getUserInfo, payload: userPointBean);
   }

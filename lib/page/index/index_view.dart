@@ -52,30 +52,8 @@ Widget buildView(IndexState state, Dispatch dispatch, ViewService viewService) {
         SliverToBoxAdapter(
           child: viewService.buildComponent('hotArticle'),
         ),
-//        SliverList(delegate: SliverChildBuilderDelegate(
-//
-//        ))
       ],
     ),
-//        child: SingleChildScrollView(
-//          child: Column(
-//            children: <Widget>[
-//              viewService.buildComponent('banner'),
-//              viewService.buildComponent('classify'),
-//              viewService.buildComponent('hotArticle'),
-//              // viewService.buildComponent('hotProject'),
-//            ],
-//          ),
-//        ),
+
   ));
-  // body: SingleChildScrollView(
-  //   child: Column(
-  //     children: <Widget>[
-  //       viewService.buildComponent('banner'),
-  //       viewService.buildComponent('classify'),
-  //       viewService.buildComponent('hotArticle'),
-  //       // viewService.buildComponent('hotProject'),
-  //     ],
-  //   ),
-  // ),
 }

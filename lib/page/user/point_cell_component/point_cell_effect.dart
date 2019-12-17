@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'action.dart';
-import 'state.dart';
+import 'point_cell_action.dart';
+import 'point_cell_state.dart';
 
 Effect<PointCellState> buildEffect() {
   return combineEffects(<Object, Effect<PointCellState>>{
