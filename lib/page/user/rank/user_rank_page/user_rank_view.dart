@@ -2,20 +2,20 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
-import 'package:flutter_android_fun/page/user/user_point_page/user_point_action.dart';
-import 'package:flutter_android_fun/utils/ToastUtils.dart';
 import 'package:flutter_android_fun/widget/LoadPage.dart';
+import 'package:flutter_android_fun/widget/LyAppBar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'user_point_state.dart';
+import 'user_rank_action.dart';
+import 'user_rank_state.dart';
 
 Widget buildView(
-    UserPointState state, Dispatch dispatch, ViewService viewService) {
+    UserRankState state, Dispatch dispatch, ViewService viewService) {
   ListAdapter _listAdapter = viewService.buildAdapter();
 
   /// 渲染主页面
   Widget _renderContainer() {
-    return state.pageNum == 1 && state.pointCell.isEmpty == true
+    return state.pageNum == 1 && state.listForRank.isEmpty == true
         ? LoadPage(
             mColor: state.themeColor,
           )
@@ -29,15 +29,7 @@ Widget buildView(
   }
 
   return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: state.themeColor,
-        title: Text(
-          '积分',
-          style: TextStyle(fontSize: 18, color: ColorConf.ColorFFFFFF),
-        ),
-        elevation: 0,
-      ),
+      appBar: LyAppBar.getAppBar(state.themeColor, '排名'),
       body: SmartRefresher(
         enablePullDown: true,
         enablePullUp: true,
@@ -66,10 +58,10 @@ Widget buildView(
         ),
         controller: state.refreshController,
         onRefresh: () {
-          dispatch(UserPointActionCreator.onRefresh());
+          dispatch(UserRankActionCreator.onRefresh());
         },
         onLoading: () {
-          dispatch(UserPointActionCreator.onLoadmore());
+          dispatch(UserRankActionCreator.onLoadMore());
         },
         child: _renderContainer(),
       ));

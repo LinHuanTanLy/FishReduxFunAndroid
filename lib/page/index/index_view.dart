@@ -12,7 +12,7 @@ Widget buildView(IndexState state, Dispatch dispatch, ViewService viewService) {
     enablePullDown: true,
     enablePullUp: true,
     header: WaterDropMaterialHeader(
-      backgroundColor: ColorConf.Color18C8A1,
+      backgroundColor: state.themeColor,
     ),
     footer: CustomFooter(
       builder: (BuildContext context, LoadStatus mode) {

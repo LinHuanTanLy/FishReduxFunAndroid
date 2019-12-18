@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/LoadPage.dart';
 
 //import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
@@ -21,10 +22,9 @@ Widget buildView(
     withLocalStorage: true,
     hidden: true,
     initialChild: Container(
-      child: const Center(
-        child: Text('Waiting.....'),
-      ),
-    ),
+        child: LoadPage(
+      mColor: state.themeColor,
+    )),
     url: state.url,
   );
 }

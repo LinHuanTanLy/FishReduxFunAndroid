@@ -11,7 +11,9 @@ import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
 import 'page/register/register_page.dart';
 import 'page/second/second_page.dart';
-import 'page/user/user_point_page/user_point_page.dart';
+import 'page/user/point/user_point_page/user_point_page.dart';
+import 'page/user/rank/user_rank_page/user_rank_page.dart';
+import 'page/user/web_collection/web_collection_page/web_collection_page.dart';
 import 'page/web/web_page.dart';
 import 'page/wechat_author/author_article_page/article_list_page.dart';
 import 'page/wechat_author/author_page.dart';
@@ -59,7 +61,13 @@ class AppRoute {
           'wechat_author_article': AuthorArticlePage(),
 
           /// 用户积分
-          'user_point': UserPointPage()
+          'user_point': UserPointPage(),
+
+          /// 用户排名
+          'user_rank': UserRankPage(),
+
+          /// 网址收藏
+          'web_collection': WebCollectionPage(),
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系

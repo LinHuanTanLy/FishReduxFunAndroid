@@ -61,15 +61,15 @@ IndexState _onUpdateIndexArticleDataSource(IndexState state, Action action) {
   }
   print('state.mPageSize=${state.mPageSize}');
   print('newState.mPageSize=${newState.mPageSize}');
-  newState.mPageSize = state.mPageSize + 1;
+  newState.mPageSize = state.mPageSize ?? 0 + 1;
   print('newState.mPageSize=${newState.mPageSize}');
 
   /// 结束刷新
   // if (_tempList != null && _tempList.isNotEmpty == true) {
-    state.mRefreshController.loadComplete();
+  state.mRefreshController.loadComplete();
   // } else {
-    // state.mRefreshController.loadComplete();
-    // state.mRefreshController.loadNoData();
+  // state.mRefreshController.loadComplete();
+  // state.mRefreshController.loadNoData();
   // }
   return newState;
 }

@@ -1,6 +1,9 @@
-import 'package:fish_redux/fish_redux.dart';
+import 'dart:ui';
 
-class WebLoadState implements Cloneable<WebLoadState> {
+import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/global_state/global_state.dart';
+
+class WebLoadState implements GlobalBaseState,Cloneable<WebLoadState> {
   String url;
   String title;
 
@@ -10,6 +13,21 @@ class WebLoadState implements Cloneable<WebLoadState> {
       ..url = url
       ..title = title;
   }
+
+  @override
+  bool ifLogin;
+
+  @override
+  double screenH;
+
+  @override
+  double screenW;
+
+  @override
+  Color themeColor;
+
+  @override
+  int userPoint;
 }
 
 WebLoadState initState(Map<String, dynamic> args) {

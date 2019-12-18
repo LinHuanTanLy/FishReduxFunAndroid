@@ -16,7 +16,7 @@ Widget buildView(
         child: Swiper(
           viewportFraction: 0.88,
           scale: 0.95,
-          duration: 5,
+          duration: 800,
           transformer: ScaleAndFadeTransformer(),
           autoplay: state.bannerDataSource.isNotEmpty,
           itemBuilder: (BuildContext context, int index) {

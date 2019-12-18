@@ -107,25 +107,20 @@ Widget buildView(
 
   /// 渲染子分页item
   Widget _initTopMenuItem({String iconStr, String str, Function function}) {
-    return Expanded(
-      child: GestureDetector(
-        child: Column(
-          children: <Widget>[
-            Image.asset(
-              iconStr ?? 'images/icon_second.png',
-              color: state.themeColor,
-              width: 34,
-              height: 34,
-            ),
-            Container(
-              child: Text(str ?? '我的收藏',
-                  style: TextStyle(fontSize: 12, color: Colors.black)),
-              margin: const EdgeInsets.only(top: 4),
-            )
-          ],
+    return Column(
+      children: <Widget>[
+        Image.asset(
+          iconStr ?? 'images/icon_second.png',
+          color: state.themeColor,
+          width: 34,
+          height: 34,
         ),
-        onTap: function,
-      ),
+        Container(
+          child: Text(str ?? '我的收藏',
+              style: TextStyle(fontSize: 12, color: Colors.black)),
+          margin: const EdgeInsets.only(top: 4),
+        )
+      ],
     );
   }
 
@@ -150,19 +145,39 @@ Widget buildView(
         Container(
           child: Row(
             children: <Widget>[
-              _initTopMenuItem(
-                  iconStr: 'images/icon_second.png',
-                  str: '收藏网址',
-                  function: dispatch(SecondActionCreator.onToSeeCollection())),
-              _initTopMenuItem(
-                  iconStr: 'images/icon_history.png',
-                  str: '收藏文章',
-                  function:
-                      dispatch(SecondActionCreator.onToArticleCollection())),
-              _initTopMenuItem(
-                  iconStr: 'images/icon_coffee.png',
-                  str: '我的分享',
-                  function: dispatch(SecondActionCreator.onToSeeShare())),
+              Expanded(
+                child: GestureDetector(
+                  child: _initTopMenuItem(
+                      iconStr: 'images/icon_second.png',
+                      str: '收藏网址',
+                      function: () {}),
+                  onTap: () {
+                    dispatch(SecondActionCreator.onToSeeCollection());
+                  },
+                ),
+              ),
+              Expanded(
+                child: GestureDetector(
+                  child: _initTopMenuItem(
+                      iconStr: 'images/icon_history.png',
+                      str: '收藏文章',
+                      function: () {}),
+                  onTap: () {
+                    dispatch(SecondActionCreator.onToArticleCollection());
+                  },
+                ),
+              ),
+              Expanded(
+                child: GestureDetector(
+                  child: _initTopMenuItem(
+                      iconStr: 'images/icon_coffee.png',
+                      str: '我的分享',
+                      function: () {}),
+                  onTap: () {
+                    dispatch(SecondActionCreator.onToSeeShare());
+                  },
+                ),
+              )
             ],
           ),
           margin: const EdgeInsets.only(top: 10),

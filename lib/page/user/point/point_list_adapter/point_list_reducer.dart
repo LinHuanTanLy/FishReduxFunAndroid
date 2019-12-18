@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_android_fun/page/user/user_point_page/user_point_state.dart';
+import 'package:flutter_android_fun/page/user/point/user_point_page/user_point_state.dart';
 
 import 'point_list_action.dart';
 

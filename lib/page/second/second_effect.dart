@@ -23,14 +23,22 @@ Effect<SecondState> buildEffect() {
 }
 
 void _onAction(Action action, Context<SecondState> ctx) {}
+
 void _onToArticleCollection(Action action, Context<SecondState> ctx) {}
+
 void _onToSeeCredits(Action action, Context<SecondState> ctx) {
   Navigator.pushNamed(ctx.context, 'user_point');
 }
 
-void _onToSeeRank(Action action, Context<SecondState> ctx) {}
+void _onToSeeRank(Action action, Context<SecondState> ctx) {
+  Navigator.pushNamed(ctx.context, 'user_rank');
+}
+
 void _onToSeeShare(Action action, Context<SecondState> ctx) {}
-void _onToWebCollection(Action action, Context<SecondState> ctx) {}
+
+void _onToWebCollection(Action action, Context<SecondState> ctx) {
+  Navigator.pushNamed(ctx.context, 'web_collection');
+}
 
 void _onInitState(Action action, Context<SecondState> ctx) {
   if (ctx.state.ifLogin != null && ctx.state.ifLogin)
