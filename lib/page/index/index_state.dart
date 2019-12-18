@@ -71,6 +71,7 @@ IndexState initState(Map<String, dynamic> args) {
     ..hotArticleDataSource = []
     ..commArticleDataSource = []
     ..projectListDataSource = []
+    ..mPageSize=1
     ..mRefreshController = RefreshController();
 }
 

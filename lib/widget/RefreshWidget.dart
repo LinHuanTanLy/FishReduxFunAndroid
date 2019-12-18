@@ -26,8 +26,11 @@ class RefreshWidget extends StatefulWidget {
   /// 适配器
   final ListAdapter listAdapter;
 
+  /// 默认下标  因为有些是从0开始 有些从1 开始 默认1  0的话就要自己传进来了
+  final int defIndex;
+
   RefreshWidget(this.themeColor, this.refreshController, this.pageNum,
-      this.listAdapter, this.onRefresh, this.onLoadMore);
+      this.listAdapter, this.onRefresh, this.onLoadMore,{ this.defIndex});
 
   @override
   _RefreshWidgetState createState() => _RefreshWidgetState();
@@ -63,15 +66,16 @@ class _RefreshWidgetState extends State<RefreshWidget> {
         },
       ),
       controller: widget?.refreshController,
-      onRefresh: () {},
-      onLoading: () {},
+      onRefresh: widget?.onRefresh,
+      onLoading: widget?.onLoadMore,
       child: _renderContainer(),
     );
   }
 
   /// 渲染主页面
   Widget _renderContainer() {
-    return widget.pageNum == 1 && widget?.listAdapter?.itemCount == 0
+    return widget.pageNum == (widget?.defIndex ?? 1) &&
+            widget?.listAdapter?.itemCount == 0
         ? LoadPage(
             mColor: widget?.themeColor,
           )

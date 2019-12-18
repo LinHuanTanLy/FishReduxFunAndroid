@@ -11,6 +11,7 @@ import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
 import 'page/register/register_page.dart';
 import 'page/second/second_page.dart';
+import 'page/user/article_collection/article_coll_page.dart';
 import 'page/user/point/user_point_page/user_point_page.dart';
 import 'page/user/rank/user_rank_page/user_rank_page.dart';
 import 'page/user/web_collection/web_collection_page/web_collection_page.dart';
@@ -68,6 +69,9 @@ class AppRoute {
 
           /// 网址收藏
           'web_collection': WebCollectionPage(),
+
+          ///文章收藏
+          'article_collection': ArticleCollectionPage(),
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系

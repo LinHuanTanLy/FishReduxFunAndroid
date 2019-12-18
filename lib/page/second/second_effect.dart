@@ -24,7 +24,9 @@ Effect<SecondState> buildEffect() {
 
 void _onAction(Action action, Context<SecondState> ctx) {}
 
-void _onToArticleCollection(Action action, Context<SecondState> ctx) {}
+void _onToArticleCollection(Action action, Context<SecondState> ctx) {
+  Navigator.pushNamed(ctx.context, 'article_collection');
+}
 
 void _onToSeeCredits(Action action, Context<SecondState> ctx) {
   Navigator.pushNamed(ctx.context, 'user_point');

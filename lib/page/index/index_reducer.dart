@@ -61,7 +61,7 @@ IndexState _onUpdateIndexArticleDataSource(IndexState state, Action action) {
   }
   print('state.mPageSize=${state.mPageSize}');
   print('newState.mPageSize=${newState.mPageSize}');
-  newState.mPageSize = state.mPageSize ?? 0 + 1;
+  newState.mPageSize = state.mPageSize  + 1;
   print('newState.mPageSize=${newState.mPageSize}');
 
   /// 结束刷新
