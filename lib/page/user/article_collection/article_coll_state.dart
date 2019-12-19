@@ -10,13 +10,16 @@ class ArticleCollectionState
   RefreshController refreshController;
   int pageNum = 0;
   List<ArticleCollCellBean> listForArticle;
+  String userName;
 
   @override
   ArticleCollectionState clone() {
     return ArticleCollectionState()
       ..refreshController = refreshController
       ..pageNum = pageNum
-      ..listForArticle = listForArticle;
+      ..listForArticle = listForArticle.toList()
+      ..themeColor = themeColor
+      ..userName = userName;
   }
 
   @override
@@ -39,5 +42,6 @@ ArticleCollectionState initState(Map<String, dynamic> args) {
   return ArticleCollectionState()
     ..refreshController = RefreshController()
     ..pageNum = 0
-    ..listForArticle = [];
+    ..listForArticle = []
+    ..userName = args["userName"];
 }

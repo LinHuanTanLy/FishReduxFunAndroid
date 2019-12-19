@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/cupertino.dart' hide Action;
 import 'package:flutter_android_fun/domain/entity/ArticleCollListBean.dart';
 import 'package:flutter_android_fun/utils/ToastUtils.dart';
 
@@ -10,12 +11,31 @@ Reducer<ArticleCollectionState> buildReducer() {
     <Object, Reducer<ArticleCollectionState>>{
       ArticleCollectionAction.action: _onAction,
       ArticleCollectionAction.updateArticleList: _onUpdateList,
+      ArticleCollectionAction.deleteSuccess: _onDeleteSuc,
+      ArticleCollectionAction.addSuccess: _onAddSuc,
     },
   );
 }
 
 ArticleCollectionState _onAction(ArticleCollectionState state, Action action) {
   final ArticleCollectionState newState = state.clone();
+  return newState;
+}
+
+ArticleCollectionState _onAddSuc(ArticleCollectionState state, Action action) {
+  final ArticleCollectionState newState = state.clone();
+  List<ArticleCollCellBean> listForArticle = [];
+  debugPrint("before add,the length is ${listForArticle.length}");
+  listForArticle.add(action.payload);
+  listForArticle.addAll(state.listForArticle);
+  debugPrint("after add,the length is ${listForArticle.length}");
+  return newState..listForArticle = listForArticle;
+}
+
+ArticleCollectionState _onDeleteSuc(
+    ArticleCollectionState state, Action action) {
+  final ArticleCollectionState newState = state.clone();
+  newState.listForArticle.removeWhere((e) => e.id == action.payload);
   return newState;
 }
 

@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum ArticleCollCellAction { action, toWebView }
+enum ArticleCollCellAction { action, toWebView, deleteColl }
 
 class ArticleCollCellActionCreator {
   static Action onAction() {
@@ -10,5 +9,9 @@ class ArticleCollCellActionCreator {
 
   static Action onToWebView() {
     return const Action(ArticleCollCellAction.toWebView);
+  }
+
+  static Action onDelete() {
+    return const Action(ArticleCollCellAction.deleteColl);
   }
 }

@@ -25,7 +25,8 @@ Effect<SecondState> buildEffect() {
 void _onAction(Action action, Context<SecondState> ctx) {}
 
 void _onToArticleCollection(Action action, Context<SecondState> ctx) {
-  Navigator.pushNamed(ctx.context, 'article_collection');
+  Navigator.pushNamed(ctx.context, 'article_collection',
+      arguments: {"userName":ctx.state.userBean?.data?.username});
 }
 
 void _onToSeeCredits(Action action, Context<SecondState> ctx) {

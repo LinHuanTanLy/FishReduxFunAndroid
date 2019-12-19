@@ -56,7 +56,7 @@ class _WebOptionDialogState extends State<WebOptionDialog> {
               ),
               Container(
                 child: Text(
-                  '网站名字',
+                  '输入标题',
                   style: TextStyle(fontSize: 13, color: ColorConf.Color48586D),
                 ),
                 margin: const EdgeInsets.only(top: 20),
@@ -69,7 +69,7 @@ class _WebOptionDialogState extends State<WebOptionDialog> {
               ),
               Container(
                 child: Text(
-                  '网站地址',
+                  '输入地址',
                   style: TextStyle(fontSize: 13, color: ColorConf.Color48586D),
                 ),
                 margin: const EdgeInsets.only(top: 20),

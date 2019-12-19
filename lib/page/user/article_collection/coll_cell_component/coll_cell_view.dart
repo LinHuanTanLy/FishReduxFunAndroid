@@ -7,6 +7,7 @@ import 'coll_cell_state.dart';
 Widget buildView(
     ArticleCollCellState state, Dispatch dispatch, ViewService viewService) {
   String author = state?.articleCollCellBean?.author;
+  String chapterName = state?.articleCollCellBean?.chapterName;
   TextStyle _styleForName =
       TextStyle(fontSize: 11, color: ColorConf.Color48586D);
   TextStyle _styleForDate =
@@ -58,6 +59,8 @@ Widget buildView(
 
   return GestureDetector(
     child: Container(
+      color: Colors.transparent,
+      alignment: Alignment.center,
       padding: const EdgeInsets.only(top: 6, left: 12, right: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +81,7 @@ Widget buildView(
             child: Row(
               children: <Widget>[
                 Text(
-                  state?.articleCollCellBean?.chapterName,
+                  chapterName.isNotEmpty == true ? chapterName : "自助分享",
                   style: _styleForName,
                 ),
                 Expanded(
@@ -98,6 +101,9 @@ Widget buildView(
     ),
     onTap: () {
       dispatch(ArticleCollCellActionCreator.onToWebView());
+    },
+    onLongPress: () {
+      dispatch(ArticleCollCellActionCreator.onDelete());
     },
   );
 }

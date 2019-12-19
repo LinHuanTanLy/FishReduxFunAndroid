@@ -124,6 +124,27 @@ Widget buildView(
     );
   }
 
+  /// 中部分类item
+  Widget _initClassifyItem(String iconStr, String titleStr) {
+    return Expanded(
+        child: Column(
+      children: <Widget>[
+        Image.asset(
+          iconStr ?? 'images/icon_second.png',
+          color: ColorConf.Color8048586D,
+          width: 24,
+        ),
+        Container(
+          child: Text(
+            titleStr ?? '吃枣药丸',
+            style: TextStyle(fontSize: 8, color: ColorConf.Color8048586D),
+          ),
+          margin: const EdgeInsets.only(top: 4),
+        )
+      ],
+    ));
+  }
+
   return SingleChildScrollView(
     child: Column(
       children: <Widget>[
@@ -148,7 +169,7 @@ Widget buildView(
               Expanded(
                 child: GestureDetector(
                   child: _initTopMenuItem(
-                      iconStr: 'images/icon_second.png',
+                      iconStr: 'images/icon_flower.png',
                       str: '收藏网址',
                       function: () {}),
                   onTap: () {
@@ -170,7 +191,7 @@ Widget buildView(
               Expanded(
                 child: GestureDetector(
                   child: _initTopMenuItem(
-                      iconStr: 'images/icon_coffee.png',
+                      iconStr: 'images/icon_index.png',
                       str: '我的分享',
                       function: () {}),
                   onTap: () {
@@ -181,7 +202,41 @@ Widget buildView(
             ],
           ),
           margin: const EdgeInsets.only(top: 10),
-        )
+        ),
+        Divider(
+          color: state.themeColor.withAlpha(100),
+          height: 32,
+        ),
+        Row(
+          children: <Widget>[
+            _initClassifyItem('images/icon_girl.png', '体系'),
+            _initClassifyItem('images/icon_second.png', '吃枣药丸'),
+            _initClassifyItem('images/icon_enjoy.png', '放松放松'),
+            _initClassifyItem('images/icon_boy.png', '导航'),
+          ],
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 10, bottom: 10),
+          height: 8,
+          color: ColorConf.ColorF6f6f6,
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 8, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(Icons.keyboard_arrow_down),
+              Text(
+                '自建Todo',
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+
       ],
     ),
   );

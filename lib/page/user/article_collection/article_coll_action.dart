@@ -44,12 +44,12 @@ class ArticleCollectionActionCreator {
     return Action(ArticleCollectionAction.updateArticleList, payload: list);
   }
 
-  static Action onAddSuccess() {
-    return const Action(ArticleCollectionAction.addSuccess);
+  static Action onAddSuccess(ArticleCollCellBean bean) {
+    return Action(ArticleCollectionAction.addSuccess, payload: bean);
   }
 
-  static Action onDeleteSuccess() {
-    return const Action(ArticleCollectionAction.deleteSuccess);
+  static Action onDeleteSuccess(int id) {
+    return Action(ArticleCollectionAction.deleteSuccess, payload: id);
   }
 
   static Action onUpdateSuccess() {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/domain/entity/AddWebKitBean.dart';
 import 'package:flutter_android_fun/domain/entity/WebKitCollectionBean.dart';
 import 'package:flutter_android_fun/net/DioUtils.dart';
-import 'package:flutter_android_fun/page/user/web_collection/web_option_dialog/WebOptionDialog.dart';
+import 'package:flutter_android_fun/page/dialog/OptionDialog.dart';
 import 'package:flutter_android_fun/utils/ToastUtils.dart';
 import 'web_collection_action.dart';
 import 'web_collection_state.dart';
