@@ -125,23 +125,26 @@ Widget buildView(
   }
 
   /// 中部分类item
-  Widget _initClassifyItem(String iconStr, String titleStr) {
+  Widget _initClassifyItem(String iconStr, String titleStr, Function function) {
     return Expanded(
-        child: Column(
-      children: <Widget>[
-        Image.asset(
-          iconStr ?? 'images/icon_second.png',
-          color: ColorConf.Color8048586D,
-          width: 24,
-        ),
-        Container(
-          child: Text(
-            titleStr ?? '吃枣药丸',
-            style: TextStyle(fontSize: 8, color: ColorConf.Color8048586D),
+        child: GestureDetector(
+      child: Column(
+        children: <Widget>[
+          Image.asset(
+            iconStr ?? 'images/icon_second.png',
+            color: ColorConf.Color8048586D,
+            width: 24,
           ),
-          margin: const EdgeInsets.only(top: 4),
-        )
-      ],
+          Container(
+            child: Text(
+              titleStr ?? '吃枣药丸',
+              style: TextStyle(fontSize: 8, color: ColorConf.Color8048586D),
+            ),
+            margin: const EdgeInsets.only(top: 4),
+          )
+        ],
+      ),
+      onTap: function,
     ));
   }
 
@@ -209,10 +212,14 @@ Widget buildView(
         ),
         Row(
           children: <Widget>[
-            _initClassifyItem('images/icon_girl.png', '体系'),
-            _initClassifyItem('images/icon_second.png', '吃枣药丸'),
-            _initClassifyItem('images/icon_enjoy.png', '放松放松'),
-            _initClassifyItem('images/icon_boy.png', '导航'),
+            _initClassifyItem('images/icon_girl.png', '体系', () {
+              dispatch(SecondActionCreator.onToSystem());
+            }),
+            _initClassifyItem('images/icon_second.png', '吃枣药丸', () {}),
+            _initClassifyItem('images/icon_enjoy.png', '放松放松', () {}),
+            _initClassifyItem('images/icon_boy.png', '导航', () {
+               dispatch(SecondActionCreator.toNavigation());
+            }),
           ],
         ),
         Container(
@@ -236,7 +243,6 @@ Widget buildView(
             ],
           ),
         ),
-
       ],
     ),
   );

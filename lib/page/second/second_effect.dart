@@ -18,15 +18,24 @@ Effect<SecondState> buildEffect() {
     SecondAction.toSeeShare: _onToSeeShare,
     SecondAction.toWebCollection: _onToWebCollection,
     SecondAction.toArticleCollection: _onToArticleCollection,
+    SecondAction.toSystem: _onToSystem,
+    SecondAction.toNavigation: _onToNavi,
     Lifecycle.initState: _onInitState,
   });
 }
 
 void _onAction(Action action, Context<SecondState> ctx) {}
+void _onToNavi(Action action, Context<SecondState> ctx) {
+  Navigator.pushNamed(ctx.context, 'navi');
+}
+
+void _onToSystem(Action action, Context<SecondState> ctx) {
+  Navigator.pushNamed(ctx.context, 'system');
+}
 
 void _onToArticleCollection(Action action, Context<SecondState> ctx) {
   Navigator.pushNamed(ctx.context, 'article_collection',
-      arguments: {"userName":ctx.state.userBean?.data?.username});
+      arguments: {"userName": ctx.state.userBean?.data?.username});
 }
 
 void _onToSeeCredits(Action action, Context<SecondState> ctx) {

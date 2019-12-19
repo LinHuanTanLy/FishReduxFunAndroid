@@ -21,11 +21,39 @@ enum SecondAction {
 
   /// 去分享页面
   toSeeShare,
+
+  /// 体系页面
+  toSystem,
+
+  /// 吃枣药丸
+  toGameOver,
+
+  /// 放松放松
+  toRelax,
+
+  /// 导航
+  toNavigation,
 }
 
 class SecondActionCreator {
   static Action onAction() {
     return const Action(SecondAction.action);
+  }
+
+  static Action onToSystem() {
+    return const Action(SecondAction.toSystem);
+  }
+
+  static Action onToGameOver() {
+    return const Action(SecondAction.toGameOver);
+  }
+
+  static Action toRelax() {
+    return const Action(SecondAction.toRelax);
+  }
+
+  static Action toNavigation() {
+    return const Action(SecondAction.toNavigation);
   }
 
   static Action onToSeeCredits() {

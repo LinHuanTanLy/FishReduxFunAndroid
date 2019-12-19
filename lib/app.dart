@@ -5,12 +5,15 @@ import 'conf/ColorConf.dart';
 import 'global_state/global_state.dart';
 import 'global_state/global_store.dart';
 import 'page/index/index_page.dart';
-import 'page/index/project_list_page/page.dart';
-import 'page/index/project_list_page/project_child_page/page.dart';
+import 'page/index/project_list_page/project_list_page.dart';
+import 'page/index/project_list_page/project_child_page/project_child_page.dart';
 import 'page/login/login_page.dart';
 import 'page/main/main_page.dart';
+import 'page/navi/navi_page.dart';
 import 'page/register/register_page.dart';
 import 'page/second/second_page.dart';
+import 'page/system/system_child/system_child_page.dart';
+import 'page/system/system_page.dart';
 import 'page/user/article_collection/article_coll_page.dart';
 import 'page/user/point/user_point_page/user_point_page.dart';
 import 'page/user/rank/user_rank_page/user_rank_page.dart';
@@ -72,6 +75,14 @@ class AppRoute {
 
           ///文章收藏
           'article_collection': ArticleCollectionPage(),
+
+          /// 体系列表
+          'system': SystemPage(),
+
+          /// 体系列表下属文章
+          'system_child': SystemChildPage(),
+
+          'navi': NaviPage()
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系

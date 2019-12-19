@@ -1,8 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_android_fun/page/index/hot_component/article_cell_component/article_component.dart';
 import 'package:flutter_android_fun/page/index/hot_component/article_cell_component/article_state.dart';
-import 'package:flutter_android_fun/page/index/hot_component/comm_article_cell_component/component.dart';
-import 'package:flutter_android_fun/page/index/hot_component/comm_article_cell_component/state.dart';
+import 'package:flutter_android_fun/page/index/hot_component/comm_article_cell_component/comm_article_cell_component.dart';
+import 'package:flutter_android_fun/page/index/hot_component/comm_article_cell_component/comm_article_cell_state.dart';
 import 'package:flutter_android_fun/page/index/hot_component/project_component/project_component.dart';
 import 'package:flutter_android_fun/page/index/hot_component/project_component/project_state.dart';
 

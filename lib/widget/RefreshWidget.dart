@@ -29,8 +29,12 @@ class RefreshWidget extends StatefulWidget {
   /// 默认下标  因为有些是从0开始 有些从1 开始 默认1  0的话就要自己传进来了
   final int defIndex;
 
+  /// 是否需要下划线
+  final bool ifNeedSeparated;
+
   RefreshWidget(this.themeColor, this.refreshController, this.pageNum,
-      this.listAdapter, this.onRefresh, this.onLoadMore,{ this.defIndex});
+      this.listAdapter, this.onRefresh, this.onLoadMore,
+      {this.defIndex, this.ifNeedSeparated = true});
 
   @override
   _RefreshWidgetState createState() => _RefreshWidgetState();
@@ -65,7 +69,7 @@ class _RefreshWidgetState extends State<RefreshWidget> {
           );
         },
       ),
-      controller: widget?.refreshController,
+      controller: widget?.refreshController ?? RefreshController(),
       onRefresh: widget?.onRefresh,
       onLoading: widget?.onLoadMore,
       child: _renderContainer(),
@@ -79,12 +83,24 @@ class _RefreshWidgetState extends State<RefreshWidget> {
         ? LoadPage(
             mColor: widget?.themeColor,
           )
-        : ListView.separated(
-            itemBuilder: widget?.listAdapter?.itemBuilder,
-            itemCount: widget?.listAdapter?.itemCount,
-            separatorBuilder: (BuildContext context, int index) {
-              return Divider();
-            },
-          );
+        : _initListView();
+  }
+
+  /// 渲染listView 根据需求是否是带分割线
+  ListView _initListView() {
+    if (widget.ifNeedSeparated) {
+      return ListView.separated(
+        itemBuilder: widget?.listAdapter?.itemBuilder,
+        itemCount: widget?.listAdapter?.itemCount,
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider();
+        },
+      );
+    } else {
+      return ListView.builder(
+        itemBuilder: widget?.listAdapter?.itemBuilder,
+        itemCount: widget?.listAdapter?.itemCount,
+      );
+    }
   }
 }
