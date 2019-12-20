@@ -1,6 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_android_fun/conf/ColorConf.dart';
 import 'package:flutter_android_fun/widget/KeepAliveWidget.dart';
 
 import '../../app.dart';
@@ -11,6 +10,7 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   /// 渲染appBar
   AppBar _renderAppBar() {
     return AppBar(
+      backgroundColor: state.themeColor,
       centerTitle: true,
       titleSpacing: 40,
       title: TabBar(
@@ -27,14 +27,18 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
         indicatorPadding: const EdgeInsets.all(0),
         indicatorSize: TabBarIndicatorSize.label,
       ),
-      leading: IconButton(
-        onPressed: () {},
-        icon: Image.asset(
-          'images/icon_more.png',
-          color: Colors.white,
-          height: 24,
-        ),
-      ),
+      leading: Builder(builder: (ctx) {
+        return IconButton(
+          onPressed: () {
+            dispatch(MainActionCreator.onOpenDraw(ctx));
+          },
+          icon: Image.asset(
+            'images/icon_more.png',
+            color: Colors.white,
+            height: 24,
+          ),
+        );
+      }),
       actions: <Widget>[
         IconButton(
           onPressed: () {},
@@ -55,5 +59,6 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
         KeepAliveWidget(AppRoute.global.buildPage('login', null)),
       ],
     ),
+    drawer: AppRoute.global.buildPage('draw', null),
   );
 }

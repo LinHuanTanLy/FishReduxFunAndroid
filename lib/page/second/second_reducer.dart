@@ -9,6 +9,7 @@ Reducer<SecondState> buildReducer() {
     <Object, Reducer<SecondState>>{
       SecondAction.action: _onAction,
       SecondAction.getUserInfo: _onGetUserInfo,
+      SecondAction.getTodoMenu: _onGetTodoMenuList,
     },
   );
 }
@@ -16,6 +17,11 @@ Reducer<SecondState> buildReducer() {
 SecondState _onAction(SecondState state, Action action) {
   final SecondState newState = state.clone();
   return newState;
+}
+
+SecondState _onGetTodoMenuList(SecondState state, Action action) {
+  final SecondState newState = state.clone();
+  return newState..listForTodoMenu=action.payload;
 }
 
 SecondState _onGetUserInfo(SecondState state, Action action) {

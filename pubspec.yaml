@@ -31,7 +31,7 @@ dependencies:
   #  webview_flutter: ^0.3.17
   flutter_webview_plugin: ^0.3.9+1
   shared_preferences: ^0.4.3
-#dev_dependencies:
+  #dev_dependencies:
   flutter_test:
     sdk: flutter
 
@@ -72,6 +72,14 @@ flutter:
     - images/icon_enjoy.png
     - images/icon_girl.png
     - images/icon_flower.png
+    - images/icon_unknow_01.png
+    - images/icon_unknow_02.png
+    - images/icon_unknow_03.png
+    - images/icon_unknow_04.png
+    - images/icon_unknow_05.png
+    - images/icon_unknow_06.png
+    - images/exit.png
+    - images/bg_splash.jpg
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

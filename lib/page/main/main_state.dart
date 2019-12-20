@@ -11,6 +11,7 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
   /// 菜单列表
   List<String> menuList;
   TabController tabControllerForMenu;
+
   @override
   MainState clone() {
     return MainState()

@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
+import 'package:flutter_android_fun/page/main/draw/draw_page.dart';
 
 import 'conf/ColorConf.dart';
 import 'global_state/global_state.dart';
@@ -12,6 +13,8 @@ import 'page/main/main_page.dart';
 import 'page/navi/navi_page.dart';
 import 'page/register/register_page.dart';
 import 'page/second/second_page.dart';
+import 'page/set/changeTheme/theme_page.dart';
+import 'page/splash/splash_page.dart';
 import 'page/system/system_child/system_child_page.dart';
 import 'page/system/system_page.dart';
 import 'page/user/article_collection/article_coll_page.dart';
@@ -34,6 +37,9 @@ class AppRoute {
     if (_global == null) {
       _global = PageRoutes(
         pages: <String, Page<Object, dynamic>>{
+          /// 闪屏页
+          'splash': SplashPage(),
+
           /// 首页
           'home': MainPage(),
 
@@ -82,7 +88,14 @@ class AppRoute {
           /// 体系列表下属文章
           'system_child': SystemChildPage(),
 
-          'navi': NaviPage()
+          /// 导航体系
+          'navi': NaviPage(),
+
+          /// 侧滑页面
+          'draw': DrawPage(),
+
+          /// 主题颜色修改
+          'theme_change': ThemeChangePage(),
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系
@@ -150,9 +163,10 @@ Widget createApp() {
     title: '玩安卓',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
+      indicatorColor: ColorConf.ColorFFFFFF,
       primarySwatch: ColorConf.themeColor,
     ),
-    home: routes.buildPage('home', null),
+    home: routes.buildPage('splash', null),
     onGenerateRoute: (RouteSettings settings) {
       return MaterialPageRoute<Object>(builder: (BuildContext context) {
         return routes.buildPage(settings.name, settings.arguments);

@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart' hide Action;
 
 enum GlobalAction {
   changeThemeColor,
@@ -10,11 +11,12 @@ enum GlobalAction {
 }
 
 class GlobalActionCreator {
-  static Action onChangeThemeColor() {
-    return const Action(GlobalAction.changeThemeColor);
+  static Action onChangeThemeColor(int  indexFlag) {
+    return  Action(GlobalAction.changeThemeColor,payload: indexFlag);
   }
+
   static Action onUpdateUserPoint(int userPoint) {
-    return  Action(GlobalAction.updateUserPoint,payload: userPoint);
+    return Action(GlobalAction.updateUserPoint, payload: userPoint);
   }
 
   static Action onUpdateGlobalH(double h) {

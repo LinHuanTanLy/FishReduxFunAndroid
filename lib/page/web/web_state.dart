@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_android_fun/global_state/global_state.dart';
 
-class WebLoadState implements GlobalBaseState,Cloneable<WebLoadState> {
+class WebLoadState implements GlobalBaseState, Cloneable<WebLoadState> {
   String url;
   String title;
 
@@ -11,7 +11,8 @@ class WebLoadState implements GlobalBaseState,Cloneable<WebLoadState> {
   WebLoadState clone() {
     return WebLoadState()
       ..url = url
-      ..title = title;
+      ..title = title
+      ..themeColor = themeColor;
   }
 
   @override

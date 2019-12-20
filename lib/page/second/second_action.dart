@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/domain/entity/TodoListBean.dart';
 import 'package:flutter_android_fun/domain/entity/UserPointBean.dart';
 
 enum SecondAction {
@@ -33,6 +34,9 @@ enum SecondAction {
 
   /// 导航
   toNavigation,
+
+  /// 获取todo 菜单列表
+  getTodoMenu,
 }
 
 class SecondActionCreator {
@@ -78,5 +82,9 @@ class SecondActionCreator {
 
   static Action onGetUserInfo(UserPointBean userPointBean) {
     return Action(SecondAction.getUserInfo, payload: userPointBean);
+  }
+
+  static Action onGetTodoMenuList(List<TodoCellBean> list) {
+    return Action(SecondAction.getTodoMenu, payload: list);
   }
 }

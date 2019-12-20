@@ -17,7 +17,8 @@ class UserRankState implements GlobalBaseState, Cloneable<UserRankState> {
     return UserRankState()
       ..pageNum = pageNum
       ..listForRank = listForRank
-      ..refreshController = refreshController;
+      ..refreshController = refreshController
+    ..themeColor=themeColor;
   }
 
   @override

@@ -58,16 +58,18 @@ Widget buildView(NaviState state, Dispatch dispatch, ViewService viewService) {
 
   return Scaffold(
     appBar: LyAppBar.getAppBar(state?.themeColor, '导航数据'),
-    body: SingleChildScrollView(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Expanded(
+    body: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        Expanded(
+          child: SingleChildScrollView(
             child: Column(children: _renderLeft()),
           ),
-          Expanded(
+        ),
+        Expanded(
+          child: SingleChildScrollView(
             child: Container(
               child: Wrap(
                 spacing: 10,
@@ -81,16 +83,14 @@ Widget buildView(NaviState state, Dispatch dispatch, ViewService viewService) {
                         ?.articles
                         ?.map((e) => _renderItemCell(e))
                         ?.toList()
-                    : <Widget>[
-                      
-                      ],
+                    : <Widget>[],
               ),
               margin: const EdgeInsets.only(left: 10, top: 10),
             ),
-            flex: 3,
           ),
-        ],
-      ),
+          flex: 3,
+        ),
+      ],
     ),
   );
 }

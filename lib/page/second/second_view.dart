@@ -148,6 +148,45 @@ Widget buildView(
     ));
   }
 
+  /// 渲染 todo列表
+  Widget _renderTodoMenu() {
+    if (state?.listForTodoMenu?.isEmpty == true) {
+      return Container(
+        child: Row(
+          children: <Widget>[
+            Container(
+              width: 60,
+              height: 60,
+              margin: const EdgeInsets.only(left: 10, right: 10),
+              color: ColorConf.ColorF6f6f6,
+              child: Icon(
+                Icons.add,
+                color: ColorConf.ColorFFFFFF,
+              ),
+            ),
+            Text(
+              '新建类型',
+              style: TextStyle(fontSize: 13, color: Colors.black),
+            ),
+            Expanded(
+                child: Container(
+              margin: const EdgeInsets.only(right: 16),
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.chevron_right,
+                color: ColorConf.themeColor,
+              ),
+            ))
+          ],
+        ),
+      );
+    } else {
+      return Container(
+        child: Text('有列表'),
+      );
+    }
+  }
+
   return SingleChildScrollView(
     child: Column(
       children: <Widget>[
@@ -218,7 +257,7 @@ Widget buildView(
             _initClassifyItem('images/icon_second.png', '吃枣药丸', () {}),
             _initClassifyItem('images/icon_enjoy.png', '放松放松', () {}),
             _initClassifyItem('images/icon_boy.png', '导航', () {
-               dispatch(SecondActionCreator.toNavigation());
+              dispatch(SecondActionCreator.toNavigation());
             }),
           ],
         ),
@@ -242,6 +281,12 @@ Widget buildView(
               ),
             ],
           ),
+        ),
+        _renderTodoMenu(),
+        Container(
+          margin: const EdgeInsets.only(top: 10, bottom: 10),
+          height: 8,
+          color: ColorConf.ColorF6f6f6,
         ),
       ],
     ),

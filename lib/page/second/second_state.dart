@@ -1,17 +1,22 @@
 import 'dart:ui';
 
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_android_fun/domain/entity/TodoListBean.dart';
 import 'package:flutter_android_fun/domain/entity/UserPointBean.dart';
 import 'package:flutter_android_fun/global_state/global_state.dart';
 
 class SecondState implements GlobalBaseState, Cloneable<SecondState> {
   UserPointBean userBean;
+  List<TodoCellBean> listForTodoMenu;
+
   @override
   SecondState clone() {
     return SecondState()
       ..themeColor = themeColor
       ..ifLogin = ifLogin
-      ..userBean = userBean;
+      ..userBean = userBean
+      ..userPoint=userPoint
+      ..listForTodoMenu = listForTodoMenu.toList();
   }
 
   @override
@@ -31,5 +36,5 @@ class SecondState implements GlobalBaseState, Cloneable<SecondState> {
 }
 
 SecondState initState(Map<String, dynamic> args) {
-  return SecondState();
+  return SecondState()..listForTodoMenu = [];
 }

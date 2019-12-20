@@ -12,6 +12,7 @@ Widget buildView(
   return Scaffold(
     floatingActionButton: Container(
         child: FloatingActionButton(
+      backgroundColor: state.themeColor,
       onPressed: () {
         dispatch(ArticleCollectionActionCreator.onAddArticle());
       },

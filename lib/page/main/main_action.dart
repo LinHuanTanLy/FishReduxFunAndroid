@@ -1,11 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_android_fun/domain/entity/BannerInfoBean.dart';
+import 'package:flutter/material.dart' hide Action;
 
 enum MainAction {
   action,
   clickTab,
   updatePageContent,
-
+  openDraw,
 }
 
 class MainActionCreator {
@@ -21,4 +21,7 @@ class MainActionCreator {
     return Action(MainAction.updatePageContent, payload: newIndex);
   }
 
+  static Action onOpenDraw(BuildContext context) {
+    return Action(MainAction.openDraw, payload: context);
+  }
 }

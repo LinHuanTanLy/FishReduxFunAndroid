@@ -1,6 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart' hide Action;
+import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/utils/SpUtils.dart';
 import 'global_action.dart';
 import 'global_state.dart';
 
@@ -59,8 +61,8 @@ GlobalState _onUpdateGlobalPoint(GlobalState state, Action action) {
 
 GlobalState _onchangeThemeColor(GlobalState state, Action action) {
   debugPrint('修改系统配色');
-  final Color next =
-      _colors[((_colors.indexOf(state.themeColor) + 1) % _colors.length)];
+  final int next = action.payload;
+  SpUtils.putInt('themeColor', next);
   debugPrint('修改系统配色---$next');
-  return state.clone()..themeColor = next;
+  return state.clone()..themeColor = ColorConf.ColorList[next];
 }

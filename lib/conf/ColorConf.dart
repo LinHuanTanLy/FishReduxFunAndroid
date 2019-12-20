@@ -1,6 +1,41 @@
 import 'package:flutter/material.dart';
 
 class ColorConf {
+  static const ColorList = [
+    ColorConf.themeColor,
+    Colors.black12,
+    Colors.black26,
+    Colors.black38,
+    Colors.black45,
+    Colors.black54,
+    Colors.black87,
+    Colors.black,
+    Colors.red,
+    Colors.redAccent,
+    Colors.amber,
+    Colors.amberAccent,
+    Colors.blue,
+    Colors.blueAccent,
+    Colors.lightBlue,
+    Colors.lightBlueAccent,
+    Colors.cyan,
+    Colors.cyanAccent,
+    Colors.green,
+    Colors.greenAccent,
+    Colors.yellow,
+    Colors.yellowAccent,
+    Colors.deepPurple,
+    Colors.deepPurpleAccent,
+    Colors.deepOrange,
+    Colors.deepOrangeAccent,
+    Colors.teal,
+    Colors.tealAccent,
+    Colors.pink,
+    Colors.pinkAccent,
+    Colors.indigo,
+    Colors.indigoAccent,
+  ];
+
   static const Color48586D = Color(0XFF48586D);
   static const Color8048586D = Color(0X8048586D);
   static const ColorF6f6f6 = Color(0XffF6F6F6);

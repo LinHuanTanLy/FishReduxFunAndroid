@@ -3,6 +3,7 @@ import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/global_state/global_action.dart';
 import 'package:flutter_android_fun/global_state/global_store.dart';
 import 'package:flutter_android_fun/utils/SpUtils.dart';
+import 'package:flutter_android_fun/utils/ToastUtils.dart';
 
 import 'main_action.dart';
 import 'main_page.dart';
@@ -12,12 +13,17 @@ Effect<MainState> buildEffect() {
   return combineEffects(<Object, Effect<MainState>>{
     MainAction.action: _onAction,
     MainAction.clickTab: _onClickTab,
+    MainAction.openDraw: _onOpenDraw,
     Lifecycle.initState: _onInitState,
   });
 }
 
 void _onClickTab(Action action, Context<MainState> ctx) {
   ctx.dispatch(MainActionCreator.onUpdatePageContent(action.payload));
+}
+
+void _onOpenDraw(Action action, Context<MainState> ctx) {
+  Scaffold.of(action.payload).openDrawer();
 }
 
 void _onAction(Action action, Context<MainState> ctx) {}
