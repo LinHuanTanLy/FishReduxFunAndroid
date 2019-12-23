@@ -64,5 +64,6 @@ GlobalState _onchangeThemeColor(GlobalState state, Action action) {
   final int next = action.payload;
   SpUtils.putInt('themeColor', next);
   debugPrint('修改系统配色---$next');
+  debugPrint('ColorConf.ColorList---${ColorConf.ColorList}');
   return state.clone()..themeColor = ColorConf.ColorList[next];
 }

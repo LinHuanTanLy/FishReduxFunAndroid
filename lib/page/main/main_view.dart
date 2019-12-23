@@ -12,7 +12,7 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
     return AppBar(
       backgroundColor: state.themeColor,
       centerTitle: true,
-      titleSpacing: 40,
+      titleSpacing: 60,
       title: TabBar(
         tabs: state.menuList
             .map((e) => Tab(
@@ -56,7 +56,7 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
       children: <Widget>[
         KeepAliveWidget(AppRoute.global.buildPage('second', null)),
         KeepAliveWidget(AppRoute.global.buildPage('index', null)),
-        KeepAliveWidget(AppRoute.global.buildPage('login', null)),
+//        KeepAliveWidget(AppRoute.global.buildPage('login', null)),
       ],
     ),
     drawer: AppRoute.global.buildPage('draw', null),

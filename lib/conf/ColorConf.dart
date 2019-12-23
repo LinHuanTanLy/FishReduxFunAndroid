@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorConf {
   static const ColorList = [
-    ColorConf.themeColor,
+    Color(0xffE81F63),
     Colors.black12,
     Colors.black26,
     Colors.black38,

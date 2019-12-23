@@ -39,5 +39,5 @@ class MainState implements GlobalBaseState, Cloneable<MainState> {
 }
 
 MainState initState(Map<String, dynamic> args) {
-  return MainState()..menuList = ['我的', '好文', '休闲'];
+  return MainState()..menuList = ['我的', '好文',];
 }

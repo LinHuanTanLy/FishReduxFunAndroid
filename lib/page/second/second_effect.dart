@@ -39,12 +39,18 @@ Effect<SecondState> buildEffect() {
     /// 查看导航
     SecondAction.toNavigation: _onToNavigation,
 
+    SecondAction.toLogin: _onToLogin,
+
     /// state 初始化
     Lifecycle.initState: _onInitState,
   });
 }
 
 void _onAction(Action action, Context<SecondState> ctx) {}
+
+void _onToLogin(Action action, Context<SecondState> ctx) {
+  Navigator.pushNamed(ctx.context, 'login');
+}
 
 void _onToNavigation(Action action, Context<SecondState> ctx) {
   Navigator.pushNamed(ctx.context, 'navi');
@@ -55,8 +61,12 @@ void _onToSystem(Action action, Context<SecondState> ctx) {
 }
 
 void _onToArticleCollection(Action action, Context<SecondState> ctx) {
-  Navigator.pushNamed(ctx.context, 'article_collection',
-      arguments: {"userName": ctx.state.userBean?.data?.username});
+  if (ctx.state.ifLogin) {
+    Navigator.pushNamed(ctx.context, 'article_collection',
+        arguments: {"userName": ctx.state.userBean?.data?.username});
+  } else {
+    ToastUtils.showTs('请先登录');
+  }
 }
 
 void _onToSeeCredits(Action action, Context<SecondState> ctx) {
@@ -70,7 +80,11 @@ void _onToSeeRank(Action action, Context<SecondState> ctx) {
 void _onToSeeShare(Action action, Context<SecondState> ctx) {}
 
 void _onToWebCollection(Action action, Context<SecondState> ctx) {
-  Navigator.pushNamed(ctx.context, 'web_collection');
+  if (ctx.state.ifLogin) {
+    Navigator.pushNamed(ctx.context, 'web_collection');
+  } else {
+    ToastUtils.showTs('请先登录');
+  }
 }
 
 void _onInitState(Action action, Context<SecondState> ctx) {

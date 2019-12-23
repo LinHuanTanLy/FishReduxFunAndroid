@@ -9,7 +9,7 @@ import 'splash_state.dart';
 Effect<SplashState> buildEffect() {
   return combineEffects(<Object, Effect<SplashState>>{
     SplashAction.action: _onAction,
-    Lifecycle.initState: _onInitState,
+    Lifecycle.build: _onInitState,
   });
 }
 
@@ -19,9 +19,10 @@ void _onInitState(Action action, Context<SplashState> ctx) {
   SpUtils.getInt('themeColor').then((color) {
     debugPrint('the themeColor is $color');
     GlobalStore.store
-        .dispatch(GlobalActionCreator.onChangeThemeColor(color));
+        .dispatch(GlobalActionCreator.onChangeThemeColor(color ?? 0));
   });
-  Future.delayed(Duration(milliseconds: 3), () {
-    Navigator.pushNamed(ctx.context, 'home');
+  Future.delayed(Duration(seconds: 3), () {
+    Navigator.pushNamedAndRemoveUntil(
+        ctx.context, 'home', (router) => router == null);
   });
 }

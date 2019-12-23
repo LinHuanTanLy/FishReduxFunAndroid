@@ -102,7 +102,19 @@ Widget buildView(
               )
             ],
           )
-        : Container();
+        : GestureDetector(
+            child: Container(
+              color: ColorConf.ColorFFFFFF,
+              child: Text(
+                '点击去登录',
+                style: TextStyle(fontSize: 15, color: ColorConf.Color48586D),
+              ),
+              alignment: Alignment.center,
+            ),
+            onTap: () {
+              dispatch(SecondActionCreator.onToLogin());
+            },
+          );
   }
 
   /// 渲染子分页item

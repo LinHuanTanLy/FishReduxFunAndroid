@@ -37,11 +37,18 @@ enum SecondAction {
 
   /// 获取todo 菜单列表
   getTodoMenu,
+
+  /// 去登录页面
+  toLogin,
 }
 
 class SecondActionCreator {
   static Action onAction() {
     return const Action(SecondAction.action);
+  }
+
+  static Action onToLogin() {
+    return const Action(SecondAction.toLogin);
   }
 
   static Action onToSystem() {
