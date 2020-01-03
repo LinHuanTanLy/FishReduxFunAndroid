@@ -16,5 +16,6 @@ void _onToWebView(Action action, Context<CommArticleCellState> ctx) {
   String url = params['url'];
   String title = params['title'];
   Navigator.pushNamed(ctx.context, "webView",
-      arguments: {"url": url, "title": title});
+      arguments: {"url": url, "title": title,    "id": ctx.state?.cellBean?.id,
+        "collect": ctx.state?.cellBean?.collect});
 }

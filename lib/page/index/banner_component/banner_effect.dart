@@ -25,8 +25,13 @@ void _onToWebView(Action action, Context<BannerState> ctx) {
   dynamic params = action.payload;
   String url = params['url'];
   String title = params['title'];
-  Navigator.pushNamed(ctx.context, "webView",
-      arguments: {"url": url, "title": title});
+  int id = params['id'];
+  Navigator.pushNamed(ctx.context, "webView", arguments: {
+    "url": url,
+    "title": title,
+    "id": id,
+    "collect": false,
+  });
 }
 
 void _onToLogin(Action action, Context<BannerState> ctx) {

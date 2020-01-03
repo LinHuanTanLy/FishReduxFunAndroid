@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_android_fun/conf/ColorConf.dart';
 import 'package:flutter_android_fun/widget/LoadPage.dart';
 import 'package:flutter_android_fun/widget/LyAppBar.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';

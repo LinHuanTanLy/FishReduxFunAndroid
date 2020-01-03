@@ -139,7 +139,7 @@ Widget buildView(
                         child: _renderProjectCell(e),
                         onTap: () {
                           dispatch(ProjectActionCreator.onToWebViewPage(
-                              {"url": e?.link, "title": e?.title}));
+                              {"url": e?.link, "title": e?.title,"id":e?.id,"collect":e?.collect}));
                         },
                       ))
                   .toList(),

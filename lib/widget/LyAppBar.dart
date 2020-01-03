@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
 
 class LyAppBar {
-  static AppBar getAppBar(Color color, String title,{Widget bottom}) {
+  static AppBar getAppBar(Color color, String title,{Widget bottom,List<Widget> action}) {
     return AppBar(
       iconTheme: IconThemeData(color: Colors.white),
       backgroundColor: color,
@@ -12,6 +12,7 @@ class LyAppBar {
       ),
       elevation: 0,
       bottom: bottom,
+      actions: action,
     );
   }
 }

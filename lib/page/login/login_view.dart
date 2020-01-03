@@ -7,7 +7,7 @@ import 'login_state.dart';
 
 Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
   /// 渲染输入框
-  Container _renderTextEdit({double topMargin, hintStr, controller}) {
+  Container _renderTextEdit({double topMargin, hintStr, controller,obscureText}) {
     return Container(
       margin: EdgeInsets.only(
           left: 40, right: 40, top: topMargin ?? 10, bottom: 10),
@@ -21,6 +21,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
         ],
       ),
       child: TextField(
+        obscureText: obscureText ?? false,
         controller: controller,
         decoration: InputDecoration(
             contentPadding:
@@ -74,11 +75,12 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
           ),
           _renderTextEdit(
               topMargin: 40,
-              hintStr: '请输入您的账号${state.screenW}',
+              hintStr: '请输入您的账号',
               controller: state.controllerForAccount),
           _renderTextEdit(
               topMargin: 10,
-              hintStr: '请输入您的密码${state.ifLogin}',
+              obscureText: true,
+              hintStr: '请输入您的密码',
               controller: state.controllerForPassWord),
           GestureDetector(
             child: Container(

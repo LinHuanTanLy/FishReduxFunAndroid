@@ -27,6 +27,8 @@ void _onToWebViewPage(Action action, Context<ProjectState> ctx) {
   dynamic params = action.payload;
   String url = params['url'];
   String title = params['title'];
+  int id = params['id'];
+  bool collect = params['collect'];
   Navigator.pushNamed(ctx.context, "webView",
-      arguments: {"url": url, "title": title});
+      arguments: {"url": url, "title": title, "id": id, "collect": collect});
 }

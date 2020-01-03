@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_android_fun/conf/ColorConf.dart';
 import 'package:flutter_android_fun/page/index/index_action.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'index_state.dart';
@@ -13,6 +12,8 @@ Widget buildView(IndexState state, Dispatch dispatch, ViewService viewService) {
     enablePullUp: true,
     header: WaterDropMaterialHeader(
       backgroundColor: state.themeColor,
+      color: state.themeColor,
+
     ),
     footer: CustomFooter(
       builder: (BuildContext context, LoadStatus mode) {

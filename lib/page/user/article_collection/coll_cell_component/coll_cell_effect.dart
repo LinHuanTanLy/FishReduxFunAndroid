@@ -48,7 +48,9 @@ void _toDelete(Action action, Context<ArticleCollCellState> ctx) {
 void _toWebView(Action action, Context<ArticleCollCellState> ctx) {
   Navigator.pushNamed(ctx.context, "webView", arguments: {
     "url": ctx?.state?.articleCollCellBean?.link,
-    "title": ctx?.state?.articleCollCellBean?.title
+    "title": ctx?.state?.articleCollCellBean?.title,
+    "id": ctx.state?.articleCollCellBean?.id,
+    "collect": true,
   });
 }
 

@@ -11,10 +11,15 @@ Effect<ArticleAuthorCellState> buildEffect() {
 }
 
 void _onAction(Action action, Context<ArticleAuthorCellState> ctx) {}
+
 void _toWebViewPage(Action action, Context<ArticleAuthorCellState> ctx) {
   dynamic params = action.payload;
   String url = params['url'];
   String title = params['title'];
-  Navigator.pushNamed(ctx.context, "webView",
-      arguments: {"url": url, "title": title});
+  Navigator.pushNamed(ctx.context, "webView", arguments: {
+    "url": url,
+    "title": title,
+    "id": ctx.state?.articleCellChildList?.id,
+    "collect": ctx.state?.articleCellChildList?.collect
+  });
 }

@@ -33,7 +33,8 @@ Widget buildView(
               onTap: () {
                 dispatch(BannerActionCreator.onToWebView({
                   'url': state.bannerDataSource[index]?.url,
-                  'title': state.bannerDataSource[index]?.title
+                  'title': state.bannerDataSource[index]?.title,
+                  'id': -1
                 }));
               },
             );

@@ -25,8 +25,12 @@ void _onToWebView(Action action, Context<WebCollectionCellState> ctx) {
   dynamic params = action.payload;
   String url = params['url'];
   String title = params['title'];
-  Navigator.pushNamed(ctx.context, "webView",
-      arguments: {"url": url, "title": title});
+  Navigator.pushNamed(ctx.context, "webView", arguments: {
+    "url": url,
+    "title": title,
+    "id": ctx.state?.cellCollectionBean?.id,
+    "collect": true,
+  });
 }
 
 /// 显示弹窗

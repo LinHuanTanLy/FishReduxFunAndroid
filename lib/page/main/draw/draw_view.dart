@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/utils/ToastUtils.dart';
 
 import 'draw_action.dart';
 import 'draw_state.dart';
@@ -32,16 +33,15 @@ Widget buildView(DrawState state, Dispatch dispatch, ViewService viewService) {
     );
   }
 
-  return Scaffold(
-    primary: true,
-    backgroundColor: Colors.transparent,
-    body: GestureDetector(
-      child: Container(
+  return Container(
+    child: Scaffold(
+      primary: true,
+      backgroundColor: Colors.transparent,
+      body: Container(
         padding: EdgeInsets.only(
           top: state.screenH * 0.1,
         ),
         color: ColorConf.ColorFFFFFF.withAlpha(240),
-        width: state.screenW * 5 / 7,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -160,5 +160,6 @@ Widget buildView(DrawState state, Dispatch dispatch, ViewService viewService) {
         ),
       ),
     ),
+    width: state.screenW * 5 / 7,
   );
 }

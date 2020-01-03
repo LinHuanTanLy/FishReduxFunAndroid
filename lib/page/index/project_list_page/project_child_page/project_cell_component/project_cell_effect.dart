@@ -18,6 +18,14 @@ void _onToProjectDetail(Action action, Context<ProjectCellState> ctx) {
   String title = params['title'];
   print('项目cell 跳转进去的url=$url');
   print('项目cell 跳转进去的title=$title');
-  Navigator.pushNamed(ctx.context, "webView",
-      arguments: {"url": url, "title": title});
+  Navigator.pushNamed(
+    ctx.context,
+    "webView",
+    arguments: {
+      "url": url,
+      "title": title,
+      "id": ctx?.state?.projectSingleCell?.id,
+      "collect": ctx?.state?.projectSingleCell?.collect
+    },
+  );
 }
