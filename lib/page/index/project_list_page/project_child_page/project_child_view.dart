@@ -42,7 +42,7 @@ Widget buildView(
             dispatch(ProjectChildActionCreator.onRefresh());
           },
           onLoading: () {
-            dispatch(ProjectChildActionCreator.onLoadmore());
+            dispatch(ProjectChildActionCreator.onLoadMore());
           },
           child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) => Divider(),

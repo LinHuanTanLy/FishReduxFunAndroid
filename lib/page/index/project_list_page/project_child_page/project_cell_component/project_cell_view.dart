@@ -27,9 +27,12 @@ Widget buildView(
                     width: 16,
                   ),
                 ),
-                Text(state?.projectSingleCell?.author,
-                    style:
-                        TextStyle(fontSize: 12, color: ColorConf.Color8048586D))
+                Container(
+                  child: Text(state?.projectSingleCell?.author,
+                      style: TextStyle(
+                          fontSize: 12, color: ColorConf.Color8048586D)),
+                  margin: const EdgeInsets.only(left: 4),
+                )
               ],
             ),
             margin: const EdgeInsets.only(top: 10, bottom: 10),
@@ -58,7 +61,8 @@ Widget buildView(
     onTap: () {
       dispatch(ProjectCellActionCreator.onToProjectDetail({
         "url": state?.projectSingleCell?.link,
-        "title": state?.projectSingleCell?.title
+        "title": state?.projectSingleCell?.title,
+        "collect": state?.projectSingleCell?.collect,
       }));
     },
   );

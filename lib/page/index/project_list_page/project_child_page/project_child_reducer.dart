@@ -9,6 +9,7 @@ Reducer<ProjectChildState> buildReducer() {
     <Object, Reducer<ProjectChildState>>{
       ProjectChildAction.action: _onAction,
       ProjectChildAction.updateProjectList: _onUpdateProjectList,
+      ProjectChildAction.updateCollectStatus: _onUpdateCollStatus,
     },
   );
 }
@@ -16,6 +17,18 @@ Reducer<ProjectChildState> buildReducer() {
 ProjectChildState _onAction(ProjectChildState state, Action action) {
   final ProjectChildState newState = state.clone();
   return newState;
+}
+
+ProjectChildState _onUpdateCollStatus(ProjectChildState state, Action action) {
+
+
+  print('更新数据------------newState..dataSourceForList=${action.payload}');
+  int id = action.payload['id'];
+  bool status = action.payload['collect'];
+  final ProjectChildState newState = state.clone();
+  List<ProjectSingleCell> tempList = newState.dataSourceForList;
+  tempList.singleWhere((e) => e.id == id).collect = status;
+  return newState..dataSourceForList = tempList;
 }
 
 ProjectChildState _onUpdateProjectList(ProjectChildState state, Action action) {

@@ -20,23 +20,23 @@ Effect<WebLoadState> buildEffect() {
 void _onAction(Action action, Context<WebLoadState> ctx) {}
 
 void _onGoBack(Action action, Context<WebLoadState> ctx) {
-  ctx.state.flutterWebviewPlugin.canGoBack().then((data) {
+  ctx.state.flutterWebViewPlugin.canGoBack().then((data) {
     if (data) {
-      ctx.state.flutterWebviewPlugin.goBack();
+      ctx.state.flutterWebViewPlugin.goBack();
     } else {
-      Navigator.pop(ctx.context);
+      Navigator.pop(ctx.context, ctx.state.ifCollect);
     }
   });
 }
 
 void _onForward(Action action, Context<WebLoadState> ctx) {
-  ctx.state.flutterWebviewPlugin.canGoForward().then((data) {
-    ctx.state.flutterWebviewPlugin.goForward();
+  ctx.state.flutterWebViewPlugin.canGoForward().then((data) {
+    ctx.state.flutterWebViewPlugin.goForward();
   });
 }
 
 void _onRefresh(Action action, Context<WebLoadState> ctx) {
-  ctx.state.flutterWebviewPlugin.reload();
+  ctx.state.flutterWebViewPlugin.reload();
 }
 
 void _onLike(Action action, Context<WebLoadState> ctx) {

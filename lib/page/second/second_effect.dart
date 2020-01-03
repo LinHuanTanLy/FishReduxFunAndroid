@@ -43,6 +43,8 @@ Effect<SecondState> buildEffect() {
 
     /// state 初始化
     Lifecycle.initState: _onInitState,
+
+    Lifecycle.build: _onBuild,
   });
 }
 
@@ -90,6 +92,15 @@ void _onToWebCollection(Action action, Context<SecondState> ctx) {
 void _onInitState(Action action, Context<SecondState> ctx) {
   _requestUserInfo(action, ctx);
   _requestUserTodoList(action, ctx);
+}
+
+void _onBuild(Action action, Context<SecondState> ctx) {
+  if (ctx.state.ifLogin != null &&
+      ctx.state.ifLogin &&
+      ctx.state.userBean == null) {
+    _requestUserInfo(action, ctx);
+    _requestUserTodoList(action, ctx);
+  }
 }
 
 /// 请求用户数据

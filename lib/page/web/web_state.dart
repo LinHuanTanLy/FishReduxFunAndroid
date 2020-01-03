@@ -10,7 +10,7 @@ class WebLoadState implements GlobalBaseState, Cloneable<WebLoadState> {
   String title;
   dynamic id;
   bool ifCollect = false;
-  FlutterWebviewPlugin flutterWebviewPlugin;
+  FlutterWebviewPlugin flutterWebViewPlugin;
 
   @override
   WebLoadState clone() {
@@ -18,7 +18,7 @@ class WebLoadState implements GlobalBaseState, Cloneable<WebLoadState> {
       ..url = url
       ..title = title
       ..themeColor = themeColor
-      ..flutterWebviewPlugin = flutterWebviewPlugin
+      ..flutterWebViewPlugin = flutterWebViewPlugin
       ..id = id
       ..ifCollect = ifCollect;
   }
@@ -46,6 +46,6 @@ WebLoadState initState(Map<String, dynamic> args) {
     ..url = args['url']
     ..id = args['id']
     ..ifCollect = args['collect'] ?? false
-    ..flutterWebviewPlugin = FlutterWebviewPlugin()
+    ..flutterWebViewPlugin = FlutterWebviewPlugin()
     ..title = args['title'];
 }
