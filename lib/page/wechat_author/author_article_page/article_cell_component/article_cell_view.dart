@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 
 import 'article_cell_action.dart';
 import 'article_cell_state.dart';
@@ -43,10 +44,8 @@ Widget buildView(
             ),
             Container(
               margin: const EdgeInsets.only(top: 8, bottom: 8),
-              child: Text(
-                state?.articleCellChildList?.title,
-                textAlign: TextAlign.start,
-                style: TextStyle(fontSize: 16, color: Colors.black),
+              child: HtmlTextWidget(
+                msg: state?.articleCellChildList?.title,
               ),
             ),
             Row(

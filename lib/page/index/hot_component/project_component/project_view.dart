@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
 import 'package:flutter_android_fun/domain/entity/ProjectListBean.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 import 'project_action.dart';
 import 'project_state.dart';
 
@@ -41,20 +42,9 @@ Widget buildView(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(
-                  bean?.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontSize: 14,
-                      shadows: <Shadow>[
-                        Shadow(
-                            color: Colors.white10,
-                            offset: Offset(2, 2),
-                            blurRadius: 10)
-                      ],
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                HtmlTextWidget(
+                  msg: bean?.title,
+                  color: ColorConf.ColorFFFFFF,
                 ),
                 Text(
                   bean?.desc,
@@ -138,8 +128,12 @@ Widget buildView(
                   .map((e) => GestureDetector(
                         child: _renderProjectCell(e),
                         onTap: () {
-                          dispatch(ProjectActionCreator.onToWebViewPage(
-                              {"url": e?.link, "title": e?.title,"id":e?.id,"collect":e?.collect}));
+                          dispatch(ProjectActionCreator.onToWebViewPage({
+                            "url": e?.link,
+                            "title": e?.title,
+                            "id": e?.id,
+                            "collect": e?.collect
+                          }));
                         },
                       ))
                   .toList(),

@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 
 import 'comm_article_cell_action.dart';
 import 'comm_article_cell_state.dart';
@@ -26,11 +27,8 @@ Widget buildView(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            child: Text(
-              '${state.cellBean?.title ?? ""}',
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Colors.black, fontSize: 14),
+            child: HtmlTextWidget(
+              msg: state?.cellBean?.title ?? "",
             ),
           ),
           Container(

@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 
 import 'system_child_cell_action.dart';
 import 'system_child_cell_state.dart';
@@ -71,10 +72,7 @@ Widget buildView(
             style: _styleForName,
           ),
           Container(
-            child: Text(
-              state?.systemChildCellBean?.title,
-              style: _styleForTitle,
-            ),
+            child: HtmlTextWidget(msg: state?.systemChildCellBean?.title,),
             margin: const EdgeInsets.only(top: 8),
           ),
           _renderDesc(),

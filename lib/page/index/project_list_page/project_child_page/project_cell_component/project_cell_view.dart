@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 
 import 'project_cell_action.dart';
 import 'project_cell_state.dart';
@@ -14,9 +15,8 @@ Widget buildView(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            state?.projectSingleCell?.title,
-            style: TextStyle(fontSize: 16, color: Colors.black),
+          HtmlTextWidget(
+            msg: state?.projectSingleCell?.title,
           ),
           Container(
             child: Row(

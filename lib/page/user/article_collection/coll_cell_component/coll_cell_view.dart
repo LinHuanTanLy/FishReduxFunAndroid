@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 import 'coll_cell_action.dart';
 import 'coll_cell_state.dart';
 
@@ -70,10 +71,7 @@ Widget buildView(
             style: _styleForName,
           ),
           Container(
-            child: Text(
-              state?.articleCollCellBean?.title,
-              style: _styleForTitle,
-            ),
+            child: HtmlTextWidget(msg: state?.articleCollCellBean?.title,),
             margin: const EdgeInsets.only(top: 8),
           ),
           _renderDesc(),

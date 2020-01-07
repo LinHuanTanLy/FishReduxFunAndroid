@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_android_fun/conf/ColorConf.dart';
+import 'package:flutter_android_fun/widget/HtmlTextWidget.dart';
 
 import 'article_action.dart';
 import 'article_state.dart';
@@ -33,11 +34,8 @@ Widget buildView(
               ),
               Expanded(
                   child: Container(
-                child: Text(
-                  '${state.hotArticleCellBean?.title ?? ""}',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.black, fontSize: 14),
+                child: HtmlTextWidget(
+                  msg: state.hotArticleCellBean?.title,
                 ),
                 margin: const EdgeInsets.only(left: 2),
               ))
