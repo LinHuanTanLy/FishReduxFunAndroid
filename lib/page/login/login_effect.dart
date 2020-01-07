@@ -35,8 +35,6 @@ void _onToLogin(Action action, Context<LoginState> ctx) {
   String account = ctx.state.controllerForAccount.text;
   String password = ctx.state.controllerForPassWord.text;
 
-  account="15622715239";
-  password="123456";
   if (account != null && account.isNotEmpty == true) {
     // 账号不为空
     if (password != null && password.isNotEmpty == true) {

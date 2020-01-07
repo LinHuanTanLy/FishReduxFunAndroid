@@ -41,7 +41,9 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
       }),
       actions: <Widget>[
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            dispatch(MainActionCreator.onToSearch());
+          },
           icon: Icon(Icons.search),
         )
       ],

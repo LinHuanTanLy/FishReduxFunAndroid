@@ -6,11 +6,15 @@ enum MainAction {
   clickTab,
   updatePageContent,
   openDraw,
+  toSearch,
 }
 
 class MainActionCreator {
   static Action onAction() {
     return const Action(MainAction.action);
+  }
+  static Action onToSearch() {
+    return const Action(MainAction.toSearch);
   }
 
   static Action onClickTab(int newIndex) {

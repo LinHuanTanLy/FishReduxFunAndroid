@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/page/main/draw/draw_page.dart';
+import 'package:flutter_android_fun/page/search/search_page.dart';
 
 import 'conf/ColorConf.dart';
 import 'global_state/global_state.dart';
@@ -96,6 +97,9 @@ class AppRoute {
 
           /// 主题颜色修改
           'theme_change': ThemeChangePage(),
+
+          /// 搜索页面
+          'search': SearchPage(),
         },
         visitor: (String path, Page<Object, dynamic> page) {
           /// 只有特定的范围的 Page 才需要建立和 AppStore 的连接关系

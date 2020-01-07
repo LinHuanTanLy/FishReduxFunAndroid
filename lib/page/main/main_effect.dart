@@ -14,12 +14,17 @@ Effect<MainState> buildEffect() {
     MainAction.action: _onAction,
     MainAction.clickTab: _onClickTab,
     MainAction.openDraw: _onOpenDraw,
+    MainAction.toSearch: _onSearch,
     Lifecycle.initState: _onInitState,
   });
 }
 
 void _onClickTab(Action action, Context<MainState> ctx) {
   ctx.dispatch(MainActionCreator.onUpdatePageContent(action.payload));
+}
+
+void _onSearch(Action action, Context<MainState> ctx) {
+  Navigator.pushNamed(ctx.context, 'search');
 }
 
 void _onOpenDraw(Action action, Context<MainState> ctx) {
