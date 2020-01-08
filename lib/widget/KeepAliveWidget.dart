@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+/// 保持状态的包裹类
 class KeepAliveWidget extends StatefulWidget {
   final Widget child;
 
@@ -23,10 +23,3 @@ class _KeepAliveState extends State<KeepAliveWidget>
 
 Widget keepAliveWrapper(Widget child) => KeepAliveWidget(child);
 
-//class ReportComponent extends Component<ReportState> {
-//  ReportComponent()
-//      : super(
-//    view: buildView,
-//    wrapper: keepAliveWrapper,
-//  );
-//}

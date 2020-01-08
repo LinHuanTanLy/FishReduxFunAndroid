@@ -58,7 +58,6 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
       children: <Widget>[
         KeepAliveWidget(AppRoute.global.buildPage('second', null)),
         KeepAliveWidget(AppRoute.global.buildPage('index', null)),
-//        KeepAliveWidget(AppRoute.global.buildPage('login', null)),
       ],
     ),
     drawer: AppRoute.global.buildPage('draw', null),

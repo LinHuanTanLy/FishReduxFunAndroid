@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_android_fun/net/DioUtils.dart';
+import 'package:flutter_android_fun/utils/ToastUtils.dart';
 import 'web_action.dart';
 import 'web_state.dart';
 import 'package:share/share.dart';
@@ -40,10 +41,14 @@ void _onRefresh(Action action, Context<WebLoadState> ctx) {
 }
 
 void _onLike(Action action, Context<WebLoadState> ctx) {
-  if (ctx.state.ifCollect) {
-    _requestUnLickArticle(action, ctx);
+  if (ctx.state.ifLogin) {
+    if (ctx.state.ifCollect) {
+      _requestUnLickArticle(action, ctx);
+    } else {
+      _requestLickArticle(action, ctx);
+    }
   } else {
-    _requestLickArticle(action, ctx);
+    ToastUtils.showTs('嘿嘿嘿，小老弟，你还没登录哇');
   }
 }
 

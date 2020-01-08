@@ -20,7 +20,8 @@ class WebLoadState implements GlobalBaseState, Cloneable<WebLoadState> {
       ..themeColor = themeColor
       ..flutterWebViewPlugin = flutterWebViewPlugin
       ..id = id
-      ..ifCollect = ifCollect;
+      ..ifCollect = ifCollect
+      ..ifLogin = ifLogin;
   }
 
   @override
