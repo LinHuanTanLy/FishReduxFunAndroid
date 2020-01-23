@@ -10,7 +10,7 @@ class _TestPageState extends State<testPage> with AutomaticKeepAliveClientMixin 
   Widget build(BuildContext context) {
     /// 实现super方法
     super.build(context);
-    return Container();
+    return Container(child: Text('sdfs'),);
   }
 
   /// 返回true

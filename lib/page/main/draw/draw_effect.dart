@@ -15,24 +15,25 @@ Effect<DrawState> buildEffect() {
     DrawAction.toAddArticleShare: _onToArticleShare,
     DrawAction.toAddWebShare: _onToWebShare,
     DrawAction.toLogout: _onLoginOut,
-    DrawAction.toSeeAbout:_onAbout,
-    DrawAction.toSeeEnv:_onSeeEnv,
+    DrawAction.toSeeAbout: _onAbout,
+    DrawAction.toSeeEnv: _onSeeEnv,
   });
 }
 
 void _onAction(Action action, Context<DrawState> ctx) {}
-void _onSeeEnv(Action action, Context<DrawState> ctx) {
 
-}
+void _onSeeEnv(Action action, Context<DrawState> ctx) {}
+
 void _onAbout(Action action, Context<DrawState> ctx) {
-  Navigator.pushNamed(ctx.context, 'webView',arguments: {
-    "title":"关于本项目",
-    "url":"https://github.com/LinHuanTanLy/FishReduxFunAndroid"
+  Navigator.pushNamed(ctx.context, 'webView', arguments: {
+    "title": "关于本项目",
+    "url": "https://github.com/LinHuanTanLy/FishReduxFunAndroid"
   });
 }
 
 void _onLoginOut(Action action, Context<DrawState> ctx) {
   GlobalStore.store.dispatch(GlobalActionCreator.onUpdateLoginStatus(false));
+  Navigator.pop(ctx.context);
 }
 
 void _onToCredits(Action action, Context<DrawState> ctx) {

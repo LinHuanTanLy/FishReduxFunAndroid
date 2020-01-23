@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_android_fun/utils/SpUtils.dart';
+import 'package:flutter_android_fun/utils/ToastUtils.dart';
 
 import 'EnvConf.dart';
 
@@ -90,14 +91,6 @@ class DioUtils {
         print('_forData is ${params.toString()}');
         _response = await _dio.post(url, data: _forData);
       }
-      if (ifNeedSaveCookie ?? false) {
-        _cookie = _response.headers['set-cookie'];
-        if (_cookie != null) {
-          SpUtils.putStringList('cookie', _cookie).then((bool) {
-            print('保存cookie 的结果是 $bool , and the cookie is $_cookie');
-          });
-        }
-      }
     } on DioError catch (e) {
       Response _errorResponse;
       if (e != null) {
@@ -116,6 +109,14 @@ class DioUtils {
       print('url is --------------------------------$url');
       _errBack(errorCallback, dataMap["errorMsg"] ?? '网络不给力');
     } else {
+      if (ifNeedSaveCookie ?? false) {
+        _cookie = _response.headers['set-cookie'];
+        if (_cookie != null) {
+          SpUtils.putStringList('cookie', _cookie).then((bool) {
+            print('保存cookie 的结果是 $bool , and the cookie is $_cookie');
+          });
+        }
+      }
       successCallback(dataMap);
     }
   }
@@ -123,6 +124,8 @@ class DioUtils {
   _errBack(Function errCallback, String error) {
     if (errCallback != null) {
       errCallback(error);
+    } else {
+      ToastUtils.showTs(error);
     }
   }
 }

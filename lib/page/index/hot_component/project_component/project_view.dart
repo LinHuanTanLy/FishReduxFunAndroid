@@ -46,15 +46,6 @@ Widget buildView(
                   msg: bean?.title,
                   color: ColorConf.ColorFFFFFF,
                 ),
-                Text(
-                  bean?.desc,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal),
-                ),
               ],
             )),
           ],
