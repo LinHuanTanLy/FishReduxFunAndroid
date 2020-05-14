@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/material.dart' hide Action;
+import 'package:flutter/material.dart' hide Action,Page;
 import 'comm_article_cell_action.dart';
 import 'comm_article_cell_state.dart';
 

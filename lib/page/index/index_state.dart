@@ -71,7 +71,9 @@ IndexState initState(Map<String, dynamic> args) {
     ..hotArticleDataSource = []
     ..commArticleDataSource = []
     ..projectListDataSource = []
-    ..mPageSize=1
+    ..mPageSize = 1
+    ..screenH = 0
+    ..screenW = 0
     ..mRefreshController = RefreshController();
 }
 
@@ -82,7 +84,9 @@ class HotArticleConnector extends ConnOp<IndexState, HotArticleState> {
       ..hotArticleDataSource = state.hotArticleDataSource.toList()
       ..commArticleDataSource = state.commArticleDataSource.toList()
       ..projectDataSource = state.projectListDataSource.toList()
-      ..size = Size(state.screenW, state.screenH);
+      ..size = state.screenW != null && state.screenH != null
+          ? Size(state.screenW, state.screenH)
+          : Size(0, 0);
   }
 
   @override

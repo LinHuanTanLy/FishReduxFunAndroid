@@ -24,7 +24,7 @@ class UserPointBean {
 
 class Data {
   int coinCount;
-  int rank;
+  String rank;
   int userId;
   String username;
 

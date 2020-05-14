@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart' hide Action;
+import 'package:flutter/material.dart' hide Action,Page;
 import 'package:flutter_android_fun/utils/ToastUtils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

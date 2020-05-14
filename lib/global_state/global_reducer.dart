@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'dart:ui';
-import 'package:flutter/material.dart' hide Action;
+import 'package:flutter/material.dart' hide Action,Page;
 import 'package:flutter_android_fun/conf/ColorConf.dart';
 import 'package:flutter_android_fun/utils/SpUtils.dart';
 import 'global_action.dart';

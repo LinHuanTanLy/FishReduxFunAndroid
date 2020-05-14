@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/material.dart' hide Action;
+import 'package:flutter/material.dart' hide Action,Page;
 import 'package:flutter_android_fun/domain/entity/UserPointBean.dart';
 import 'package:flutter_android_fun/domain/entity/UserPointListBean.dart';
 import 'package:flutter_android_fun/global_state/global_state.dart';
