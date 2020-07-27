@@ -164,7 +164,7 @@ Widget createApp() {
   final AbstractRoutes routes = AppRoute.global;
 
   return MaterialApp(
-    title: '玩安卓',
+    title: '玩儿安卓',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       indicatorColor: ColorConf.ColorFFFFFF,

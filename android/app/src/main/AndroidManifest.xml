@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_android_fun"
+        android:label="玩儿安卓"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
